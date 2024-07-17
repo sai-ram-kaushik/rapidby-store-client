@@ -1,0 +1,176 @@
+{
+  "navbar": {
+    "title": "/logo.svg",
+    "followButton": "Follow us on",
+    "socials": [
+      { "label": "Instagram", "icon": "/icons/insta.png" },
+      { "label": "Linkedin", "icon": "/icons/linkedin.png" },
+      { "label": "Facebook", "icon": "/icons/facebook.png" }
+    ],
+    "buttonTitle": "Get Started"
+  },
+
+  "home": {
+    "boxImage": "/people.svg",
+    "boxTitle": "Already trusted by 1k+",
+    "heading": "You got the traffic?",
+    "subHeading": "What category you belong to?",
+    "categories": [
+      { "label": "Lifestyle Vlogger", "icon": "/icons/vlog.png" },
+      { "label": "Gamer", "icon": "/icons/gamer.png" },
+      { "label": "Dropshipper", "icon": "/icons/drop.png" },
+      { "label": "Influencer", "icon": "/icons/influencer.png" },
+      { "label": "Businessman", "icon": "/icons/businessman.png" }
+    ],
+    "buttonTitle": "Get Started",
+    "Image": "/home.svg"
+  },
+
+  "aboutUs": {
+    "title": "Launch Your Customized Products with Your Brand!",
+    "titleContent": "Create, customize, and launch your very own branded products effortlessly—no technical skills needed. Experience real-time visual customization of your website and products. Start selling with your label today!",
+    "noiceBg": "/noiceBg.png",
+    "boxTitle": "Join the 100k community",
+    "boxContent": "Connecting influencers and brands to drive impact.",
+    "boxImage": "/people.svg",
+    "recognitionImage": "/recognition.png"
+  },
+
+  "footer": {
+    "links": [
+      { "label": "Home" },
+      { "label": "Privacy Policy" },
+      { "label": "Terms of Use" },
+      { "label": "Return policy" }
+    ],
+
+    "socials": [
+      { "label": "facebook", "icon": "/footerIcons/facebook.png" },
+      { "label": "Twitter", "icon": "/footerIcons/twitter.png" },
+      { "label": "Instagram", "icon": "/footerIcons/instagram.png" },
+      { "label": "Linkedin", "icon": "/footerIcons/linkedin.png" },
+      { "label": "Youtube", "icon": "/footerIcons/youtube.png" }
+    ]
+  },
+
+  "features": {
+    "title": "How it Works?",
+    "content": "Our platform is very easy to use having the most user friendly dashboard!",
+    "storeCreateImage": "/works.svg",
+    "accordionItems": [
+      {
+        "title": "Create your store",
+        "content": "Claim your brand name and create your own store in just 10 seconds.",
+        "image": "/works.svg"
+      },
+      {
+        "title": "Add Product",
+        "content": "Add from a variety of 5000+ Products listed on rapidby for free",
+        "image": "/addProduct.svg"
+      },
+      {
+        "title": "Share your store",
+        "content": "Now share your store with your audience & monetize it with your traffic.",
+        "image": "/shareStore.svg"
+      }
+    ]
+  },
+
+  "platformDetails": {
+    "firstBoxTitle": "Ready to build your own store?",
+    "firstBoxContent": "Monetize your traffic, and sell products under your brand name and add a extra layer of income in your creator journey!",
+    "firstBoxButtonTitle": "Build your store",
+    "firstBoxImage": "/ownStoreImage.png",
+    "noiceBg": "/noiceBg.png",
+
+    "secondBoxTitle": "Still not sure? Book a call with us!",
+    "secondBoxContent": "We understand decision making is tough sometimes, but we are always here to guide you through.",
+    "secondBoxButtonTitle": "Book a call",
+    "secondBoxImage": "/bookACall.png"
+  },
+
+  "testimonials": {
+    "title": "We are the favourite platform in the market!",
+    "leftReviews": [
+      {
+        "name": "Jack",
+        "username": "@jack",
+        "body": "“These top-notch products have not only elevated my brand but also significantly increased my revenue. Thanks a lot”",
+        "img": "/testimonial.png"
+      },
+      {
+        "name": "Jill",
+        "username": "@jill",
+        "body": "“These top-notch products have not only elevated my brand but also significantly increased my revenue. Thanks a lot”",
+        "img": "/testimonial.png"
+      },
+      {
+        "name": "John",
+        "username": "@john",
+        "body": "“These top-notch products have not only elevated my brand but also significantly increased my revenue. Thanks a lot”",
+        "img": "/testimonial.png"
+      },
+      {
+        "name": "Jane",
+        "username": "@jane",
+        "body": "“These top-notch products have not only elevated my brand but also significantly increased my revenue. Thanks a lot”",
+        "img": "/testimonial.png"
+      },
+      {
+        "name": "Jenny",
+        "username": "@jenny",
+        "body": "“These top-notch products have not only elevated my brand but also significantly increased my revenue. Thanks a lot”",
+        "img": "/testimonial.png"
+      },
+      {
+        "name": "James",
+        "username": "@james",
+        "body": "I'm at a loss for words. This is amazing. I love it.",
+        "img": "/testimonial.png"
+      }
+    ],
+
+    "rightReviews": [
+      {
+        "name": "Jack",
+        "username": "@jack",
+        "body": "“These top-notch products have not only elevated my brand but also significantly increased my revenue. Thanks a lot”",
+        "img": "/testimonial.png"
+      },
+      {
+        "name": "Jill",
+        "username": "@jill",
+        "body": "“These top-notch products have not only elevated my brand but also significantly increased my revenue. Thanks a lot”",
+        "img": "/testimonial.png"
+      },
+      {
+        "name": "John",
+        "username": "@john",
+        "body": "“These top-notch products have not only elevated my brand but also significantly increased my revenue. Thanks a lot”",
+        "img": "/testimonial.png"
+      },
+      {
+        "name": "Jane",
+        "username": "@jane",
+        "body": "“These top-notch products have not only elevated my brand but also significantly increased my revenue. Thanks a lot”",
+        "img": "/testimonial.png"
+      },
+      {
+        "name": "Jenny",
+        "username": "@jenny",
+        "body": "“These top-notch products have not only elevated my brand but also significantly increased my revenue. Thanks a lot”",
+        "img": "/testimonial.png"
+      },
+      {
+        "name": "James",
+        "username": "@james",
+        "body": "I'm at a loss for words. This is amazing. I love it.",
+        "img": "/testimonial.png"
+      }
+    ]
+  },
+
+  "faq": {
+    "title": "Frequently Asked Questions"
+  }
+}

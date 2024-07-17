@@ -1,0 +1,11 @@
+{
+  "about": [
+    { "label": "Qualtiy Assurance", "icon": "/icons/hand-thumb-up.svg" },
+    { "label": "Money Back Guarentee", "icon": "/icons/banknotes.svg" },
+    {
+      "label": "Quick Chat Support",
+      "icon": "/icons/chat-bubble-left-right.svg"
+    },
+    { "label": "7-Day Delivery", "icon": "/icons/truck.svg" }
+  ]
+}
