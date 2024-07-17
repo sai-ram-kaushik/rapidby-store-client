@@ -72,7 +72,7 @@ const Home = ({ home }) => {
 
           {/* image side */}
           <div>
-            <img src={Image} />
+            <img src={Image} width={600} height={600}/>
           </div>
         </div>
       </div>
