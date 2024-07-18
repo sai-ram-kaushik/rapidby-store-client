@@ -21,10 +21,8 @@ const App = () => {
             <Route path="/" element={<Home home={data.home} />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route
-              path="/store"
-              element={<ProtectedRoute Component={Store} />}
-            />
+            <Route path="/store" element={<Store />} />
+            <Route path="/store/:storeName" element={<Store />} />
             <Route
               path="/store/product/:id"
               element={<ProtectedRoute Component={SingleProduct} />}
