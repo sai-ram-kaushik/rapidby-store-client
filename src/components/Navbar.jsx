@@ -8,49 +8,10 @@ import { AuthContext } from "../context/AuthContext";
 const Navbar = ({ navbar }) => {
   const { title, followButton, socials, buttonTitle } = navbar;
   const [nav, setNav] = useState(false);
-  const [dropdown, setDropdown] = useState(false);
-  const { authData } = useContext(AuthContext);
-  const navigate = useNavigate();
 
   const handleChange = () => {
     setNav(!nav);
   };
-
-  const handleDropdown = () => {
-    setDropdown(!dropdown);
-  };
-
-  const logout = () => {
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("refreshToken");
-    localStorage.removeItem("userData");
-
-    // Trigger a page refresh
-    window.location.reload();
-  };
-
-  const store = () => {
-    navigate("/store");
-  };
-
-  const cart = () => [
-    navigate("/store/product/cart")
-  ]
-
-
-  const dropdownRef = useRef(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setDropdown(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
 
   return (
     <div className="w-full h-28 border-b-8 border-secondary px-5 md:px-[64px] bg-background">
@@ -78,61 +39,11 @@ const Navbar = ({ navbar }) => {
                 </div>
               );
             })}
-          </div>
 
-          {authData.accessToken ? (
-            <div className="relative" ref={dropdownRef}>
-              <div
-                className="flex items-center gap-2 cursor-pointer"
-                onClick={handleDropdown}
-              >
-                <img
-                  src={authData.storeData.imageUrl}
-                  width={30}
-                  height={30}
-                  className="rounded-full"
-                  alt="User Profile"
-                />
-                <p className="text-primary text-[18px] font-bold">
-                  Hi,{" "}
-                  <span className="text-secondary">
-                    {authData.storeData.username}
-                  </span>
-                </p>
-              </div>
-              {dropdown && (
-                <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-lg py-2 flex flex-col items-start">
-                  <button
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
-                    onClick={store}
-                  >
-                    Store
-                  </button>
-
-                  <button
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
-                    onClick={cart}
-                  >
-                    Cart
-                  </button>
-
-                  <button
-                    onClick={logout}
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
-                  >
-                    Logout
-                  </button>
-                </div>
-              )}
-            </div>
-          ) : (
             <Link to="/login">
-              <Button
-                title={buttonTitle}
-                className="bg-secondary text-background font-heading"
-              />
+              <Button title={buttonTitle} className="bg-secondary font-heading text-background"/>
             </Link>
-          )}
+          </div>
         </div>
 
         <div

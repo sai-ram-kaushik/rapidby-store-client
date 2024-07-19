@@ -1,24 +1,25 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [linkedinUrl, setLinkedinUrl] = useState("");
   const [facebookUrl, setFacebookUrl] = useState("");
   const [instagramUrl, setInstagramUrl] = useState("");
-  const [imageUrl, setImageUrl] = useState(null);
+  const [mobileNumber, setMobileNumber] = useState("");
+  const [storeName, setStoreName] = useState("");
+  const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setIsLoading(true);
     const formData = new FormData();
     formData.append("username", username);
     formData.append("email", email);
@@ -26,13 +27,17 @@ const Register = () => {
     formData.append("linkedinUrl", linkedinUrl);
     formData.append("facebookUrl", facebookUrl);
     formData.append("instagramUrl", instagramUrl);
+    formData.append("mobileNumber", mobileNumber);
+    formData.append("storeName", storeName);
     if (imageUrl) {
       formData.append("imageUrl", imageUrl);
     }
 
+    setIsLoading(true);
+
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_API_ENDPOINT_URI}/api/users/create-user`,
+        `${import.meta.env.VITE_API_ENDPOINT_URI}/api/store/create-store-admin`,
         formData,
         {
           headers: {
@@ -41,13 +46,19 @@ const Register = () => {
         }
       );
 
-      toast.success(response.data.message);
-
-      setTimeout(() => {
-        navigate("/login");
-      }, 2000);
+      console.log(
+        "User Registered Successfully!! Admin will approve your profile soon",
+        response.data
+      );
+      toast.success(
+        "User Registered Successfully!! Admin will approve your profile soon"
+      );
+      navigate("/login");
     } catch (error) {
-      console.log("Registration Failed", error);
+      console.error("Something went wrong while registering a user", error);
+      const errorMessage =
+        error.response?.data?.message || "Error while registering";
+      toast.error(errorMessage);
     } finally {
       setIsLoading(false);
     }
@@ -313,7 +324,7 @@ const Register = () => {
 
             <div>
               <label
-                for="username"
+                for="email"
                 className="block text-sm font-medium text-gray-700"
               >
                 Email
@@ -330,15 +341,31 @@ const Register = () => {
 
             <div>
               <label
-                for="username"
+                for="imageUrl"
+                className="block text-sm font-medium text-gray-700"
+              >
+                StoreImage
+              </label>
+              <input
+                type="file"
+                id="imageUrl"
+                name="imageUrl"
+                onChange={(e) => setImageUrl(e.target.files[0])}
+                className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
+              />
+            </div>
+
+            <div>
+              <label
+                for="linkedinUrl"
                 className="block text-sm font-medium text-gray-700"
               >
                 Linkedin Url
               </label>
               <input
                 type="text"
-                id="text"
-                name="text"
+                id="linkedinUrl"
+                name="linkedinUrl"
                 value={linkedinUrl}
                 onChange={(e) => setLinkedinUrl(e.target.value)}
                 className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
@@ -354,8 +381,8 @@ const Register = () => {
               </label>
               <input
                 type="text"
-                id="text"
-                name="text"
+                id="facebookUrl"
+                name="facebookUrl"
                 value={facebookUrl}
                 onChange={(e) => setFacebookUrl(e.target.value)}
                 className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
@@ -364,15 +391,15 @@ const Register = () => {
 
             <div>
               <label
-                for="username"
+                for="instagramUrl"
                 className="block text-sm font-medium text-gray-700"
               >
                 Instagram Url
               </label>
               <input
                 type="text"
-                id="text"
-                name="text"
+                id="instagramUrl"
+                name="instagramUrl"
                 value={instagramUrl}
                 onChange={(e) => setInstagramUrl(e.target.value)}
                 className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
@@ -381,15 +408,35 @@ const Register = () => {
 
             <div>
               <label
-                for="username"
+                for="mobileNumber"
                 className="block text-sm font-medium text-gray-700"
               >
-                Profile Image
+                MobileNumber
               </label>
               <input
-                type="file"
-                className="w-full border-2 px-2 py-3 rounded-xl outline-none"
-                onChange={(e) => setImageUrl(e.target.files[0])}
+                type="text"
+                id="mobileNumber"
+                name="mobileNumber"
+                value={mobileNumber}
+                onChange={(e) => setMobileNumber(e.target.value)}
+                className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
+              />
+            </div>
+
+            <div>
+              <label
+                for="storeName"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Store Name
+              </label>
+              <input
+                type="text"
+                id="storeName"
+                name="storeName"
+                value={storeName}
+                onChange={(e) => setStoreName(e.target.value)}
+                className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
               />
             </div>
 
@@ -409,14 +456,21 @@ const Register = () => {
                 className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
               />
             </div>
-            <div>
+            <div className="flex flex-col items-start gap-2">
               <button
                 type="submit"
                 disabled={isLoading}
                 className="w-full bg-black text-white p-2 rounded-md hover:bg-gray-800 focus:outline-none focus:bg-black  focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300"
               >
-                {isLoading ? "Signing in..." : "Sign In"}
+                {isLoading ? "Registering..." : "Register"}
               </button>
+
+              <p>
+                Have an account?{" "}
+                <Link to="/login" className="text-secondary">
+                  Login!!
+                </Link>
+              </p>
             </div>
           </form>
         </div>

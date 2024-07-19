@@ -11,34 +11,62 @@ import { AuthProvider } from "./context/AuthContext";
 import SingleProduct from "./pages/SingleProduct";
 import Cart from "./pages/Cart";
 import Payment from "./pages/Payment";
+import Navbar from "./components/dashboard/Navbar";
+import DashboardLayout from "./components/dashboard/DashboardLayout";
+import DashboardHome from "./pages/dashboard/DashboardHome";
+import DashboardProductsPage from "./pages/dashboard/DashboardProductsPage";
+import DashboardCatalog from "./pages/dashboard/DashboardCatalog";
+import DashboardOrdersPage from "./pages/dashboard/DashboardOrdersPage";
+import DashboardStoreSettings from "./pages/dashboard/DashboardStoreSettings";
 
 const App = () => {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Home home={data.home} />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/store" element={<Store />} />
-            <Route path="/store/:storeName" element={<Store />} />
-            <Route
-              path="/store/product/:id"
-              element={<ProtectedRoute Component={SingleProduct} />}
-            />
-            <Route
-              path="/store/product/cart"
-              element={<ProtectedRoute Component={Cart} />}
-            />
-            <Route
-              path="/store/product/payment"
-              element={<ProtectedRoute Component={Payment} />}
-            />
-          </Routes>
-        </Layout>
+        <Routes>
+          <Route
+            path="/store-admin/dashboard/*"
+            element={<ProtectedRoute Component={DashboardComponents} />}
+          />
+
+          <Route
+            path="/*"
+            element={
+              <Layout>
+                <Routes>
+                  <Route path="/" element={<Home home={data.home} />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/store" element={<Store />} />
+                  <Route path="/store/:storeName" element={<Store />} />
+                  <Route
+                    path="/store/product/:id"
+                    element={<SingleProduct />}
+                  />
+                  <Route path="/store/product/cart" element={<Cart />} />
+                  <Route path="/store/product/payment" element={<Payment />} />
+                </Routes>
+              </Layout>
+            }
+          />
+        </Routes>
       </AuthProvider>
     </BrowserRouter>
+  );
+};
+
+const DashboardComponents = () => {
+  return (
+    <DashboardLayout>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<DashboardHome />} />
+        <Route path="/products" element={<DashboardProductsPage />} />
+        <Route path="/products/catalogs" element={<DashboardCatalog />} />
+        <Route path="/orders" element={<DashboardOrdersPage />} />
+        <Route path="/store-settings" element={<DashboardStoreSettings />} />
+      </Routes>
+    </DashboardLayout>
   );
 };
 

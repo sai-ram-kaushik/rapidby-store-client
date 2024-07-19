@@ -1,0 +1,82 @@
+{
+    "productDetails": {
+      "totalProduct": {
+        "icon": "/dashboardIcons/products.svg",
+        "title": "Total Products",
+        "arrowIcon": "/dashboardIcons/arrow.svg",
+        "totalNumber": "150"
+      },
+      "orderPending": {
+        "icon": "/dashboardIcons/orders.svg",
+        "title": "Orders Pending",
+        "arrowIcon": "/dashboardIcons/arrow.svg",
+        "totalNumber": "5"
+      },
+      "totalCustomer": {
+        "icon": "/dashboardIcons/customer.svg",
+        "title": "Total Customer",
+        "arrowIcon": "/dashboardIcons/arrow.svg",
+        "totalNumber": "3205"
+      }
+    },
+  
+    "sellingProducts": {
+      "topSellingProduct": {
+        "products": [
+          {
+            "label": "Your Brand Gaming Headphones",
+            "image": "/dashboardIcons/1.png",
+            "unitsSold": "300",
+            "totalSales": "100k"
+          },
+          {
+            "label": "Your Brand Gaming Headphones",
+            "image": "/dashboardIcons/1.png",
+            "unitsSold": "300",
+            "totalSales": "100k"
+          },
+          {
+            "label": "Your Brand Gaming Headphones",
+            "image": "/dashboardIcons/1.png",
+            "unitsSold": "300",
+            "totalSales": "100k"
+          }
+        ]
+      }
+    },
+  
+    "orderDetails": {
+      "ordersList": {
+        "orders": [
+          {
+            "orderId": "#2456JL",
+            "orderedBy": "John",
+            "product": "Nike Sportsware",
+            "email": "john@gmail.com",
+            "orderDate": "Jan 12th, 12:32 pm",
+            "amount": "134.00",
+            "status": "pending"
+          },
+          {
+            "orderId": "#2456JL",
+            "orderedBy": "John",
+            "product": "Nike Sportsware",
+            "email": "john@gmail.com",
+            "orderDate": "Jan 12th, 12:32 pm",
+            "amount": "134.00",
+            "status": "pending"
+          },
+          {
+            "orderId": "#2456JL",
+            "orderedBy": "John",
+            "product": "Nike Sportsware",
+            "email": "john@gmail.com",
+            "orderDate": "Jan 12th, 12:32 pm",
+            "amount": "134.00",
+            "status": "pending"
+          }
+        ]
+      }
+    }
+  }
+  

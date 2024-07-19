@@ -9,6 +9,7 @@ import PlatformDetails from "../components/PlatformDetails";
 import Testimonials from "../components/Testimonials";
 import FAQ from "../components/Faq";
 import Subscribe from "../components/Subscribe";
+import { Link } from "react-router-dom";
 
 const Home = ({ home }) => {
   const {
@@ -64,15 +65,17 @@ const Home = ({ home }) => {
               </div>
             </div>
 
-            <Button
-              title={buttonTitle}
-              className="px-6 py-3 bg-[#502274] text-background text-xl font-heading mt-5"
-            />
+            <Link to="/login">
+              <Button
+                title={buttonTitle}
+                className="px-6 py-3 bg-[#502274] text-background text-xl font-heading mt-5"
+              />
+            </Link>
           </div>
 
           {/* image side */}
           <div>
-            <img src={Image} width={600} height={600}/>
+            <img src={Image} width={600} height={600} />
           </div>
         </div>
       </div>

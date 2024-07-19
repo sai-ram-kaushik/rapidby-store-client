@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
 const Login = () => {
@@ -40,7 +40,7 @@ const Login = () => {
       login({ accessToken, refreshToken, storeData: storeAdmin });
       toast.success("User SuccessFully LoggedIn");
       setTimeout(() => {
-        navigate("/store");
+        navigate("/store-admin/dashboard");
       }, 1000);
     } catch (error) {
       console.error("Something went wrong while logging in a user", error);
@@ -326,7 +326,7 @@ const Login = () => {
                 className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
               />
             </div>
-            <div>
+            <div className="flex flex-col items-start gap-2">
               <button
                 type="submit"
                 disabled={isLoading}
@@ -334,6 +334,13 @@ const Login = () => {
               >
                 {isLoading ? "Signing in..." : "Sign In"}
               </button>
+
+              <p>
+                Don't have an account?{" "}
+                <Link to="/register" className="text-secondary">
+                  Create Your Store Now!!
+                </Link>
+              </p>
             </div>
           </form>
         </div>

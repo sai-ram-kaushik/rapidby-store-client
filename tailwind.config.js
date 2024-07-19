@@ -12,6 +12,7 @@ export default {
         background: "#fff",
         primary: "#000",
         secondary: "#9566C8",
+        container: "#f5f5f5"
       },
     },
   },
