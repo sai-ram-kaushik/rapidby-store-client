@@ -76,19 +76,31 @@ const StoreContainer = () => {
             </h3>
 
             <div className="flex items-center gap-4 p-2">
-              <a href={storeData.linkedinUrl} target="_blank" rel="noopener noreferrer">
+              <a
+                href={storeData.linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaLinkedin
                   className="rounded-full bg-background shadow-lg"
                   size={30}
                 />
               </a>
-              <a href={storeData.facebookUrl} target="_blank" rel="noopener noreferrer">
+              <a
+                href={storeData.facebookUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaFacebookF
                   className="rounded-full bg-background shadow-lg"
                   size={30}
                 />
               </a>
-              <a href={storeData.instagramUrl} target="_blank" rel="noopener noreferrer">
+              <a
+                href={storeData.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaInstagram
                   className="rounded-full bg-background shadow-lg"
                   size={30}
@@ -103,16 +115,14 @@ const StoreContainer = () => {
               Share Profile
             </button>
             {copySuccess && (
-              <div className="mt-2 text-green-600">
-                {copySuccess}
-              </div>
+              <div className="mt-2 text-green-600">{copySuccess}</div>
             )}
 
             <div className="mt-5 w-full">
               <div className="carousel carousel-center max-w-md p-4 space-x-4 bg-transparent rounded-box">
                 {products.map((product, index) => (
                   <Link
-                    to={`/store/product/${product.catalogItem._id}`}
+                    to={`/store/${storeData.storeName}/product/${product.catalogItem._id}`}
                     className="carousel-item"
                     key={index}
                   >

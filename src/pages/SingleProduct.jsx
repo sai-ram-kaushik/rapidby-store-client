@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const SingleProduct = () => {
   const { authData } = useContext(AuthContext);
-  const { id } = useParams();
+  const { id, storeName } = useParams();
   const [product, setProduct] = useState(null);
   const { about } = data;
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ const SingleProduct = () => {
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
     axios
-      .get(`h${import.meta.env.VITE_API_ENDPOINT_URI}/api/store/get-product/${id}`, {
+      .get(`http://localhost:8000/api/store/${storeName}/product/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -45,7 +45,7 @@ const SingleProduct = () => {
       productId: product.catalogItem._id,
       name: product.catalogItem.name,
       imageUrl: product.catalogItem.imageUrl,
-      amount: product.catalogItem.amount
+      amount: product.catalogItem.amount,
     };
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -69,7 +69,7 @@ const SingleProduct = () => {
     <div className="w-full py-10 px-5 md:px-10">
       <ToastContainer />
       <div className="flex items-start">
-        <Link to="/store">
+        <Link to={`/store/${storeName}`}>
           <div className="flex items-center gap-3">
             {authData.storeData?.imageUrl && (
               <img
