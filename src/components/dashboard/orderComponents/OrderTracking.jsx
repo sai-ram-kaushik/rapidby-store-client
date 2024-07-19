@@ -44,9 +44,12 @@ const OrderTracking = () => {
 
   const handleStatusUpdate = (orderId, newStatus) => {
     axios
-      .put(`${import.meta.env.VITE_API_ENDPOINT_URI}/api/store/update-order-details/${orderId}`, {
-        status: newStatus,
-      })
+      .put(
+        `${import.meta.env.VITE_API_ENDPOINT_URI}/api/store/update-order-details/${orderId}`,
+        {
+          status: newStatus,
+        }
+      )
       .then((response) => {
         const updatedOrders = orders.map((order) =>
           order._id === orderId ? { ...order, status: newStatus } : order
@@ -112,12 +115,6 @@ const OrderTracking = () => {
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
-                Product
-              </th>
-              <th
-                scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-              >
                 Email ID
               </th>
               <th
@@ -125,12 +122,6 @@ const OrderTracking = () => {
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
                 Order Date/Time
-              </th>
-              <th
-                scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-              >
-                Amount
               </th>
               <th
                 scope="col"
@@ -155,12 +146,10 @@ const OrderTracking = () => {
                 <td className="px-6 py-4 whitespace-nowrap">
                   {order.firstName}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">{order.product}</td>
                 <td className="px-6 py-4 whitespace-nowrap">{order.email}</td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   {formatToIST(order.createdAt)}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">{order.amount}</td>
                 <td
                   className={`px-6 py-4 whitespace-nowrap ${getStatusClass(
                     order.status

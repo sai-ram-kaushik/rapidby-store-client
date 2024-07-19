@@ -59,6 +59,10 @@ const SingleProduct = () => {
 
     localStorage.setItem("cart", JSON.stringify(cart));
     toast.success("Item added to cart!");
+
+    setTimeout(() => {
+      navigate(`/store/${storeName}/product/${id}/cart`)
+    }, 2000)
   };
 
   if (!product || !product.catalogItem) {

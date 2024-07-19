@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const Cart = () => {
@@ -12,6 +12,7 @@ const Cart = () => {
   const [mobileNumber, setMobileNumber] = useState("");
   const [places, setPlaces] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const {storeName, id} = useParams()
 
   const navigate = useNavigate();
 
@@ -48,7 +49,7 @@ const Cart = () => {
       amount: calculateTotalAmount(),
     };
 
-    navigate("/store/product/payment", { state: { orderDetails } });
+    navigate(`/store/${storeName}/product/${id}/payment`, { state: { orderDetails } });
   };
 
   return (

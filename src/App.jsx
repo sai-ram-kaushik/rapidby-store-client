@@ -43,8 +43,14 @@ const App = () => {
                     path="/store/:storeName/product/:id"
                     element={<SingleProduct />}
                   />
-                  <Route path="/store/product/cart" element={<Cart />} />
-                  <Route path="/store/product/payment" element={<Payment />} />
+                  <Route
+                    path="/store/:storeName/product/:id/cart"
+                    element={<Cart />}
+                  />
+                  <Route
+                    path="/store/:storeName/product/:id/payment"
+                    element={<Payment />}
+                  />
                 </Routes>
               </Layout>
             }
