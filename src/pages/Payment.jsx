@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -9,6 +9,7 @@ const Payment = () => {
   const navigate = useNavigate();
   const [responseId, setResponseId] = useState("");
   const [responseState, setResponseState] = useState({});
+  const { storeName } = useParams();
 
   const { orderDetails } = location.state;
   const amount = orderDetails.amount;
@@ -87,7 +88,7 @@ const Payment = () => {
       localStorage.removeItem("cart");
       toast.success("Order has been placed");
       setTimeout(() => {
-        navigate("/");
+        navigate(`/store/${storeName}`);
       }, 2000);
     } catch (error) {
       toast.error(
