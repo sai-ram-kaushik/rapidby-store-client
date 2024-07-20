@@ -305,38 +305,40 @@ const Register = () => {
           </h2>
 
           <form action="#" className="space-y-4" onSubmit={handleSubmit}>
-            <div>
-              <label
-                for="username"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Username
-              </label>
-              <input
-                type="text"
-                id="username"
-                name="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
-              />
-            </div>
+            <div className="flex items-center gap-5 w-full">
+              <div>
+                <label
+                  for="username"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Username
+                </label>
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
+                />
+              </div>
 
-            <div>
-              <label
-                for="email"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
-              />
+              <div>
+                <label
+                  for="email"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
+                />
+              </div>
             </div>
 
             <div>
@@ -355,72 +357,76 @@ const Register = () => {
               />
             </div>
 
-            <div>
-              <label
-                for="linkedinUrl"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Linkedin Url
-              </label>
-              <input
-                type="text"
-                id="linkedinUrl"
-                name="linkedinUrl"
-                value={linkedinUrl}
-                onChange={(e) => setLinkedinUrl(e.target.value)}
-                className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
-              />
+            <div className="flex items-center gap-3">
+              <div>
+                <label
+                  for="linkedinUrl"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Linkedin Url
+                </label>
+                <input
+                  type="text"
+                  id="linkedinUrl"
+                  name="linkedinUrl"
+                  value={linkedinUrl}
+                  onChange={(e) => setLinkedinUrl(e.target.value)}
+                  className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="facebookUrl"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Facebook Url
+                </label>
+                <input
+                  type="text"
+                  id="facebookUrl"
+                  name="facebookUrl"
+                  value={facebookUrl}
+                  onChange={(e) => setFacebookUrl(e.target.value)}
+                  className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
+                />
+              </div>
             </div>
 
-            <div>
-              <label
-                for="facebookUrl"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Facebook Url
-              </label>
-              <input
-                type="text"
-                id="facebookUrl"
-                name="facebookUrl"
-                value={facebookUrl}
-                onChange={(e) => setFacebookUrl(e.target.value)}
-                className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
-              />
-            </div>
+            <div className="flex items-center gap-3">
+              <div>
+                <label
+                  for="instagramUrl"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Instagram Url
+                </label>
+                <input
+                  type="text"
+                  id="instagramUrl"
+                  name="instagramUrl"
+                  value={instagramUrl}
+                  onChange={(e) => setInstagramUrl(e.target.value)}
+                  className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
+                />
+              </div>
 
-            <div>
-              <label
-                for="instagramUrl"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Instagram Url
-              </label>
-              <input
-                type="text"
-                id="instagramUrl"
-                name="instagramUrl"
-                value={instagramUrl}
-                onChange={(e) => setInstagramUrl(e.target.value)}
-                className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
-              />
-            </div>
-
-            <div>
-              <label
-                for="mobileNumber"
-                className="block text-sm font-medium text-gray-700"
-              >
-                MobileNumber
-              </label>
-              <input
-                type="text"
-                id="mobileNumber"
-                name="mobileNumber"
-                value={mobileNumber}
-                onChange={(e) => setMobileNumber(e.target.value)}
-                className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
-              />
+              <div>
+                <label
+                  for="mobileNumber"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  MobileNumber
+                </label>
+                <input
+                  type="text"
+                  id="mobileNumber"
+                  name="mobileNumber"
+                  value={mobileNumber}
+                  onChange={(e) => setMobileNumber(e.target.value)}
+                  className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
+                />
+              </div>
             </div>
 
             <div>
