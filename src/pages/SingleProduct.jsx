@@ -17,7 +17,7 @@ const SingleProduct = () => {
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
     axios
-      .get(`http://localhost:8000/api/store/${storeName}/product/${id}`, {
+      .get(`${import.meta.env.VITE_API_ENDPOINT_URI}/api/store/${storeName}/product/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
