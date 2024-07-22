@@ -22,6 +22,9 @@ const ProductTable = () => {
 
   return (
     <div className="w-[350px] sm:w-full bg-background p-5 rounded-xl">
+      <div className="flex items-start">
+        <h3 className="text-[14px] md:text-[20px] font-bold font-heading">Products</h3>
+      </div>
       <div className="flex flex-col md:flex-row items-start justify-between gap-5">
         <div className="flex items-center gap-3">
           <Link to="/store/dashboard/products">My Products</Link>

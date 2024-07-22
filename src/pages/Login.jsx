@@ -28,8 +28,6 @@ const Login = () => {
         { username, password }
       );
 
-      console.log(response.data.data);
-
       const { accessToken, refreshToken, storeAdmin } = response.data.data;
 
       Cookies.set("accessToken", accessToken, { expires: 7 });
