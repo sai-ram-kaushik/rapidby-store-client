@@ -6,27 +6,27 @@ const HomeDetails = () => {
   const [userCount, setUserCount] = useState("");
   const { totalProduct, orderPending, totalCustomer } = data.productDetails;
 
-  useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_ENDPOINT_URI}api/admin/product-count`)
-      .then((response) => {
-        setCount(response.data.data);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(`${import.meta.env.VITE_API_ENDPOINT_URI}api/admin/product-count`)
+  //     .then((response) => {
+  //       setCount(response.data.data);
+  //     });
+  // }, []);
 
-  useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_ENDPOINT_URI}api/users/get-users-count`)
-      .then((response) => {
-        setUserCount(response.data.data);
-      })
-      .catch((error) => {
-        console.log(
-          "getting error while fetching the count of the users",
-          error
-        );
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(`${import.meta.env.VITE_API_ENDPOINT_URI}api/users/get-users-count`)
+  //     .then((response) => {
+  //       setUserCount(response.data.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(
+  //         "getting error while fetching the count of the users",
+  //         error
+  //       );
+  //     });
+  // }, []);
 
   return (
     <div className="w-full">

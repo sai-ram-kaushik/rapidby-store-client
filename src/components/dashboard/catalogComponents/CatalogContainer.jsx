@@ -134,7 +134,7 @@ const CatalogContainer = ({ loggedInUserID }) => {
           <h1 className="text-2xl font-bold mr-4">Product Catalog</h1>
         </div>
 
-        <div className="flex items-center justify-between w-full">
+        <div className="flex items-center justify-between w-full flex-wrap gap-4">
           <div className="flex items-center gap-2">
             <Link to="/store-admin/dashboard/products">
               <p>My Products</p>
@@ -142,11 +142,11 @@ const CatalogContainer = ({ loggedInUserID }) => {
             <p>Catalog</p>
           </div>
 
-          <div className="flex max-w-[290px] gap-2 bg-gray-100 p-2 rounded-xl">
-            <img src={searchIcon} alt="Search Icon" />
+          <div className="flex w-full md:w-auto bg-gray-100 p-2 rounded-xl">
+            <img src={searchIcon} alt="Search Icon" className="w-5 h-5"/>
             <input
               type="search"
-              className="bg-transparent outline-none"
+              className="bg-transparent outline-none w-full md:w-auto ml-2"
               placeholder="Search"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -158,7 +158,7 @@ const CatalogContainer = ({ loggedInUserID }) => {
           {filteredProducts.map((product, index) => (
             <div
               key={index}
-              className="card w-96  shadow-xl bg-transparent relative cursor-pointer"
+              className="card w-full sm:w-60 md:w-72 lg:w-80 shadow-xl bg-transparent relative cursor-pointer"
               onMouseEnter={() => handleProductClick(product)}
               onMouseLeave={() => setSelectedProduct(null)}
             >
@@ -166,13 +166,13 @@ const CatalogContainer = ({ loggedInUserID }) => {
                 <img
                   src={product.imageUrl}
                   alt={product.name}
-                  className="product-image"
+                  className="product-image w-full h-40 object-cover"
                 />
               </figure>
-              <div className="card-body flex flex-col items-start">
-                <h2 className="card-title">{product.name}</h2>
-                <p>#{product._id.slice(14, 20)}</p>
-                <p>Amount: ${product.amount}</p>
+              <div className="card-body flex flex-col items-start p-4">
+                <h2 className="card-title text-lg font-semibold">{product.name}</h2>
+                <p className="text-sm text-gray-500">#{product._id.slice(14, 20)}</p>
+                <p className="text-sm text-gray-500">Amount: ${product.amount}</p>
                 {selectedProduct &&
                   selectedProduct._id === product._id &&
                   (!product.added ? (

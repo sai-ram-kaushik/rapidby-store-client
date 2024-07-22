@@ -55,10 +55,7 @@ const Register = () => {
       );
       navigate("/login");
     } catch (error) {
-      console.error("Something went wrong while registering a user", error);
-      const errorMessage =
-        error.response?.data?.message || "Error while registering";
-      toast.error(errorMessage);
+      toast.error("All fields are required");
     } finally {
       setIsLoading(false);
     }

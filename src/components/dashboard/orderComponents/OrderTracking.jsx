@@ -69,35 +69,10 @@ const OrderTracking = () => {
   );
 
   return (
-    <div className="w-full">
-      <div className="flex flex-col items-start bg-background rounded-lg w-full p-5">
-        <div className="flex items-center justify-center gap-4 w-full">
-          <Button title="Export" />
-        </div>
-
-        <div className="flex items-center justify-between w-full">
-          <div className="flex items-center gap-4">
-            <p>All</p>
-            <p>Pending</p>
-            <p>In queue</p>
-            <p>Ready to deliver</p>
-            <p>Delivered</p>
-          </div>
-
-          <div className="flex max-w-[290px] gap-2 bg-gray-100 p-2 rounded-xl">
-            <img src={searchIcon} alt="Search" />
-            <input
-              type="search"
-              className="bg-transparent outline-none"
-              placeholder="Search"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
-        </div>
-
-        <table className="min-w-full divide-y divide-gray-200 mt-5">
-          <thead className="">
+    <div className="w-[350px] sm:w-full bg-background p-5 rounded-xl">
+      <div className="overflow-x-auto">
+        <table className="min-w-full text-sm text-left bg-white">
+          <thead className="text-xs uppercase">
             <tr>
               <th
                 scope="col"

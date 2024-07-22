@@ -17,8 +17,7 @@ const Login = () => {
     e.preventDefault();
 
     if (!username || !password) {
-      setError("Username and password are required");
-      return;
+      toast.error("Username and password are required");
     }
 
     setIsLoading(true);
