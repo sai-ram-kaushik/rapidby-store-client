@@ -23,7 +23,7 @@
       { "label": "Businessman", "icon": "/icons/businessman.png" }
     ],
     "buttonTitle": "Get Started",
-    "Image": "/rapidby.gif"
+    "Image": "/home.svg"
   },
 
   "aboutUs": {

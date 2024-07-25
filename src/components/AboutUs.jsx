@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import community from "/community.png";
-import world from '/world.png'
+import world from "/world.png";
 import value from "/value.png";
-import Aos from "aos";
-import "aos/dist/aos.css";
+import NumberTicker from "./magicui/number-ticker";
+import OrbitingCircles from "./magicui/orbiting-circles";
+import SpinningText from "@/utils/SpinningText";
 
 const AboutUs = ({ aboutUs }) => {
   const {
@@ -16,16 +17,9 @@ const AboutUs = ({ aboutUs }) => {
     recognitionImage,
   } = aboutUs;
 
-  useEffect(() => {
-    Aos.init({ duration: 2000 });
-  }, []);
-
   return (
     <div className="w-full bg-primary px-5 md:px-10 py-10">
-      <div
-        className="flex flex-col items-center justify-center gap-5 w-full "
-        data-aos="fade-right"
-      >
+      <div className="flex flex-col items-center justify-center gap-5 w-full ">
         <div className="flex flex-col md:flex-row items-start justify-center gap-10 w-full">
           <div className="flex flex-col items-start gap-5 max-w-[644px] w-full">
             <h3 className="text-background text-[25px] md:text-[51px] font-semibold leading-[30px] md:leading-[61.2px]">
@@ -112,18 +106,11 @@ const AboutUs = ({ aboutUs }) => {
           </div>
         </div>
 
-        <div className="py-10 flex flex-col md:flex-row items-center justify-center gap-10 md:gap-16">
-          <div className="max-w-[400px]">
-            <div className="max-w-[400px]">
-              <div className="w-[170px] h-[170px] md:w-[225px] md:h-[225px] ">
-                <img
-                  src={recognitionImage}
-                  class="w-full rounded-full h-full"
-                  alt="Background"
-                />
-              </div>
-            </div>
+        <div className="py-10 flex flex-col md:flex-row items-center justify-center gap-24 md:gap-36">
+          <div className="">
+            <SpinningText />
           </div>
+
           <div className="max-w-[900px] flex flex-col items-start">
             <h3 className="text-[24px] md:text-[40px] font-bold text-center md:text-start text-background">
               Join the league of successful{" "}
@@ -156,7 +143,12 @@ const AboutUs = ({ aboutUs }) => {
                 />
 
                 <div className="absolute inset-0 flex flex-col items-start text-overlay px-[20px] md:px-[40px] py-10 text-background">
-                  <h3 className="text-[48px] font-bold font-heading">4.5</h3>
+                  <h3 className="text-[48px] font-bold font-heading">
+                    <NumberTicker
+                      value={4}
+                      className="text-[48px] text-background"
+                    />
+                  </h3>
                   <p className="text-[24px] font-bold">Average rating</p>
                 </div>
               </div>
@@ -170,7 +162,11 @@ const AboutUs = ({ aboutUs }) => {
 
                 <div className="absolute inset-0 flex flex-col items-start text-overlay px-[20px] md:px-[40px] py-10 text-background">
                   <h3 className="text-[42px] md:text-[48px] font-bold font-heading">
-                    10 mins
+                    <NumberTicker
+                      value={10}
+                      className="text-[42px] md:text-[48px] text-background"
+                    />{" "}
+                    mins
                   </h3>
                   <p className="text-[24px] font-bold">Setup Time</p>
                 </div>

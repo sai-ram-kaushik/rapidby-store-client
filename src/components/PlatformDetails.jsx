@@ -1,7 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Button from "../utils/Button";
-import Aos from "aos";
-import "aos/dist/aos.css";
 
 const PlatformDetails = ({ platformDetails }) => {
   const {
@@ -16,15 +14,11 @@ const PlatformDetails = ({ platformDetails }) => {
     secondBoxImage,
   } = platformDetails;
 
-  useEffect(() => {
-    Aos.init({ duration: 2000 });
-  }, []);
 
   return (
     <div className="px-5 md:px-10 py-10 w-full bg-primary">
       <div
         className="flex flex-col items-start justify-center w-full"
-        data-aos="fade-right"
       >
         <div className="flex flex-col md:flex-row items-start justify-center w-full gap-10">
           <div className="max-w-[664px] h-[600px] md:h-[965px] border bg-gradient-to-r from-[#EF7447] to-[#DA57AA] px-10 py-10 rounded-xl relative">

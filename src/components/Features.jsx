@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
-import Aos from "aos";
-import "aos/dist/aos.css";
+import React, { useState } from "react";
 
 const Features = ({ features }) => {
   const { title, content, storeCreateImage, accordionItems } = features;
@@ -11,18 +9,15 @@ const Features = ({ features }) => {
     content,
   });
 
-  useEffect(() => {
-    Aos.init({ duration: 2000 });
-  }, []);
-
   return (
     <div className="bg-[#E2C2E6] py-10 px-5 md:px-10 w-full">
-      <div
-        className="flex flex-col-reverse md:flex-row items-center md:items-start justify-center w-full gap-10 md:gap-20"
-        data-aos="fade-right"
-      >
+      <div className="flex flex-col-reverse md:flex-row items-center md:items-start justify-center w-full gap-10 md:gap-20">
         <div className="max-w-[668px]">
-          <img src={selectedFeature.image} alt="Selected feature" />
+          <img
+            src={selectedFeature.image}
+            alt="Selected feature"
+            className="image-flicker"
+          />
         </div>
 
         <div className="flex flex-col items-start gap-4 max-w-[666px]">
