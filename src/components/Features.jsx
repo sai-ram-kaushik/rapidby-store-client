@@ -16,7 +16,7 @@ const Features = ({ features }) => {
           <img
             src={selectedFeature.image}
             alt="Selected feature"
-            className="image-flicker"
+            className="imageFlicker"
           />
         </div>
 

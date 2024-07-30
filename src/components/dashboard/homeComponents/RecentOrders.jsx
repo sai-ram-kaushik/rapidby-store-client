@@ -6,7 +6,6 @@ import moment from "moment-timezone";
 
 
 const RecentOrders = () => {
-  // const { orders } = data.orderDetails.ordersList;
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
