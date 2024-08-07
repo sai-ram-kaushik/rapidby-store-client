@@ -46,16 +46,15 @@ const Register = () => {
         }
       );
 
-      console.log(
-        "User Registered Successfully!! Admin will approve your profile soon",
-        response.data
-      );
-      toast.success(
-        "User Registered Successfully!! Admin will approve your profile soon"
-      );
+      console.log("User Registered Successfully!!", response.data);
+      toast.success("User Registered Successfully!! ");
       navigate("/login");
     } catch (error) {
-      toast.error("All fields are required");
+      if (error.response && error.response.status === 409) {
+        toast.error("Store-admin is already registered");
+      } else {
+        toast.error("All fields are required");
+      }
     } finally {
       setIsLoading(false);
     }

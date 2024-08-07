@@ -22,11 +22,6 @@
           "label": "Store Settings",
           "icon": "/dashboardIcons/store.svg",
           "path": "/store-admin/dashboard/store-settings"
-        },
-        {
-          "label": "Customer Support",
-          "icon": "/dashboardIcons/customer.svg",
-          "path": "/store-admin/dashboard/customer-support"
         }
       ],
       "logoutIcon": "/dashboardIcons/logout.svg",
