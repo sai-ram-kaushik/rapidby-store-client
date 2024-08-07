@@ -1,31 +1,35 @@
 {
-    "sidebar": {
-      "logo": "/dashboardIcon.png",
-      "title": "RapidBy",
-      "links": [
-        {
-          "label": "Home",
-          "icon": "/dashboardIcons/home.svg",
-          "path": "/store-admin/dashboard/"
-        },
-        {
-          "label": "Products",
-          "icon": "/dashboardIcons/products.svg",
-          "path": "/store-admin/dashboard/products"
-        },
-        {
-          "label": "Orders",
-          "icon": "/dashboardIcons/orders.svg",
-          "path": "/store-admin/dashboard/orders"
-        },
-        {
-          "label": "Store Settings",
-          "icon": "/dashboardIcons/store.svg",
-          "path": "/store-admin/dashboard/store-settings"
-        }
-      ],
-      "logoutIcon": "/dashboardIcons/logout.svg",
-      "logoutTitle": "Logout"
-    }
+  "sidebar": {
+    "logo": "/dashboardIcon.png",
+    "title": "RapidBy",
+    "links": [
+      {
+        "label": "Home",
+        "icon": "/dashboardIcons/home.svg",
+        "path": "/store-admin/dashboard/"
+      },
+      {
+        "label": "Products",
+        "icon": "/dashboardIcons/products.svg",
+        "path": "/store-admin/dashboard/products"
+      },
+      {
+        "label": "Orders",
+        "icon": "/dashboardIcons/orders.svg",
+        "path": "/store-admin/dashboard/orders"
+      },
+      {
+        "label": "Store Settings",
+        "icon": "/dashboardIcons/store.svg",
+        "path": "/store-admin/dashboard/store-settings"
+      },
+      {
+        "label": "Customer Support",
+        "icon": "/dashboardIcons/customer.svg",
+        "path": "/store-admin/dashboard/customer-support"
+      }
+    ],
+    "logoutIcon": "/dashboardIcons/logout.svg",
+    "logoutTitle": "Logout"
   }
-  
+}

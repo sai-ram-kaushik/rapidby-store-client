@@ -18,6 +18,7 @@ import DashboardProductsPage from "./pages/dashboard/DashboardProductsPage";
 import DashboardCatalog from "./pages/dashboard/DashboardCatalog";
 import DashboardOrdersPage from "./pages/dashboard/DashboardOrdersPage";
 import DashboardStoreSettings from "./pages/dashboard/DashboardStoreSettings";
+import DashboardCustomerSupport from "./pages/dashboard/DashboardCustomerSupport";
 
 const App = () => {
   return (
@@ -71,6 +72,10 @@ const DashboardComponents = () => {
         <Route path="/products/catalogs" element={<DashboardCatalog />} />
         <Route path="/orders" element={<DashboardOrdersPage />} />
         <Route path="/store-settings" element={<DashboardStoreSettings />} />
+        <Route
+          path="/customer-support"
+          element={<DashboardCustomerSupport />}
+        />
       </Routes>
     </DashboardLayout>
   );

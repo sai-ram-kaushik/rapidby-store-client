@@ -3,30 +3,39 @@ import data from "../../../data/Home.json";
 import axios from "axios";
 const HomeDetails = () => {
   const [count, setCount] = useState("");
-  const [userCount, setUserCount] = useState("");
+  const [orderPendingCount, setOrderPendingCount] = useState("");
   const { totalProduct, orderPending, totalCustomer } = data.productDetails;
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`${import.meta.env.VITE_API_ENDPOINT_URI}api/admin/product-count`)
-  //     .then((response) => {
-  //       setCount(response.data.data);
-  //     });
-  // }, []);
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`${import.meta.env.VITE_API_ENDPOINT_URI}api/users/get-users-count`)
-  //     .then((response) => {
-  //       setUserCount(response.data.data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(
-  //         "getting error while fetching the count of the users",
-  //         error
-  //       );
-  //     });
-  // }, []);
+    axios
+      .get(
+        `${import.meta.env.VITE_API_ENDPOINT_URI}/api/store/count-products`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((response) => {
+        setCount(response.data.data);
+        console.log(response.data.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching the product count", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(
+        `${import.meta.env.VITE_API_ENDPOINT_URI}/api/store/order-pending-count`
+      )
+      .then((response) => {
+        setOrderPendingCount(response.data.data);
+      });
+  });
 
   return (
     <div className="w-full">
@@ -41,7 +50,7 @@ const HomeDetails = () => {
               <img src={totalProduct.arrowIcon} />
             </div>
             <div className="flex items-center gap-2">
-              <h3 className="text-[56px] font-bold">{totalProduct.totalNumber}</h3>
+              <h3 className="text-[56px] font-bold">{count.count}</h3>
               <div className="flex flex-col items-start">
                 <p>10 New products</p>
                 <p>added last month</p>
@@ -61,7 +70,7 @@ const HomeDetails = () => {
             </div>
             <div className="flex items-center gap-2">
               <h3 className="text-[56px] font-bold">
-                {orderPending.totalNumber}
+                {orderPendingCount}
               </h3>
               <div className="flex flex-col items-start">
                 <p>10 New products</p>
@@ -81,7 +90,9 @@ const HomeDetails = () => {
               <img src={totalCustomer.arrowIcon} />
             </div>
             <div className="flex items-center gap-2">
-              <h3 className="text-[56px] font-bold">{totalCustomer.totalNumber}</h3>
+              <h3 className="text-[56px] font-bold">
+                {totalCustomer.totalNumber}
+              </h3>
               <div className="flex flex-col items-start">
                 <p>10 New products</p>
                 <p>added last month</p>
