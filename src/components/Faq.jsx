@@ -3,9 +3,9 @@ import faq from "/faq.svg";
 
 const FAQ = () => {
   return (
-    <div className="w-full px-5 md:px-10 py-10 bg-[#E2C2E6] relative">
-  
-      <div className="flex flex-col items-center justify-center w-full">
+    <div className="w-full  bg-[#E2C2E6] relative">
+      <img src={faq} className="absolute w-full top-[-100px] hidden md:block"/>
+      <div className="flex flex-col items-center justify-center w-full px-5 md:px-10 py-10  md:py-20">
         <h3 className="text-[58px] text-[#48246C] font-bold">
           Frequently Asked Questions
         </h3>

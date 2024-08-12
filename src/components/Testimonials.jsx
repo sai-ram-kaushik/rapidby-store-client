@@ -4,7 +4,7 @@ import Marquee from "react-fast-marquee";
 const Testimonials = ({ testimonials }) => {
   const { title, leftReviews, rightReviews } = testimonials;
   return (
-    <div className="w-full px-5 md:px-10 py-10 bg-primary">
+    <div className="w-full px-5 md:px-10 py-10 bg-primary relative md:h-[85vh]">
       <div className="flex items-start justify-start w-full">
         <div className="flex flex-col items-start gap-4 overflow-hidden">
           <h3 className="text-[25px] md:text-[40px] lg:text-[56px] max-w-[857px] md:leading-[67.2px] font-bold text-background">
