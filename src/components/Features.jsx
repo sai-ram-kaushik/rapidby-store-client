@@ -9,6 +9,15 @@ const Features = ({ features }) => {
     content,
   });
 
+  const handleMouseEnter = (e) => {
+    const imgElement = e.currentTarget;
+    imgElement.classList.add('flicked');
+
+    imgElement.addEventListener('animationend', () => {
+      imgElement.classList.remove('flicked');
+    }, { once: true });
+  };
+
   return (
     <div className="bg-[#E2C2E6] py-10 px-5 md:px-10 w-full">
       <div className="flex flex-col-reverse md:flex-row items-center md:items-start justify-center w-full gap-10 md:gap-20">
@@ -17,6 +26,7 @@ const Features = ({ features }) => {
             src={selectedFeature.image}
             alt="Selected feature"
             className="imageFlicker"
+            onMouseEnter={handleMouseEnter}
           />
         </div>
 

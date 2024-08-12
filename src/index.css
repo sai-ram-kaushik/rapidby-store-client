@@ -38,15 +38,29 @@ html {
   background-clip: content-box;
 }
 
-@keyframes rotate360 {
-  from {
-    transform: rotate(0deg);
+.imageFlicker {
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+.imageFlicker {
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+.imageFlicker.flicked {
+  animation: flicker 0.6s ease forwards;
+}
+
+@keyframes flicker {
+  0% {
+    transform: rotateY(0deg);
   }
-  to {
-    transform: rotate(90deg);
+  50% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(0deg);
   }
 }
 
-.imageFlicker:hover {
-  animation: rotate360 .5s linear;
-}

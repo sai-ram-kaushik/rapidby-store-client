@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate } from "react-router-dom";
@@ -304,10 +304,10 @@ const Register = () => {
             <div className="flex items-center gap-5 w-full">
               <div>
                 <label
-                  for="username"
+                  htmlFor="username"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Username
+                  Username <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -321,10 +321,10 @@ const Register = () => {
 
               <div>
                 <label
-                  for="email"
+                  htmlFor="email"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Email
+                  Email <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="email"
@@ -339,10 +339,10 @@ const Register = () => {
 
             <div>
               <label
-                for="imageUrl"
+                htmlFor="imageUrl"
                 className="block text-sm font-medium text-gray-700"
               >
-                StoreImage
+                StoreImage <span className="text-red-500">*</span>
               </label>
               <input
                 type="file"
@@ -356,7 +356,7 @@ const Register = () => {
             <div className="flex items-center gap-3">
               <div>
                 <label
-                  for="linkedinUrl"
+                  htmlFor="linkedinUrl"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Linkedin Url
@@ -373,10 +373,10 @@ const Register = () => {
 
               <div>
                 <label
-                  for="facebookUrl"
+                  htmlFor="facebookUrl"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Facebook Url
+                  Facebook Url 
                 </label>
                 <input
                   type="text"
@@ -392,10 +392,10 @@ const Register = () => {
             <div className="flex items-center gap-3">
               <div>
                 <label
-                  for="instagramUrl"
+                  htmlFor="instagramUrl"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Instagram Url
+                  Instagram Url 
                 </label>
                 <input
                   type="text"
@@ -409,10 +409,10 @@ const Register = () => {
 
               <div>
                 <label
-                  for="mobileNumber"
+                  htmlFor="mobileNumber"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  MobileNumber
+                  MobileNumber <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -427,10 +427,10 @@ const Register = () => {
 
             <div>
               <label
-                for="storeName"
+                htmlFor="storeName"
                 className="block text-sm font-medium text-gray-700"
               >
-                Store Name
+                Store Name <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
@@ -444,10 +444,10 @@ const Register = () => {
 
             <div>
               <label
-                for="password"
+                htmlFor="password"
                 className="block text-sm font-medium text-gray-700"
               >
-                Password
+                Password <span className="text-red-500">*</span>
               </label>
               <input
                 type="password"

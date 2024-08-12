@@ -295,7 +295,7 @@ const Login = () => {
                 for="username"
                 className="block text-sm font-medium text-gray-700"
               >
-                Username
+                Username <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
@@ -312,7 +312,7 @@ const Login = () => {
                 for="password"
                 className="block text-sm font-medium text-gray-700"
               >
-                Password
+                Password <span className="text-red-500">*</span>
               </label>
               <input
                 type="password"

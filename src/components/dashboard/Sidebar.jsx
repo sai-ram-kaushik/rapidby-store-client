@@ -24,8 +24,7 @@ const Sidebar = ({ sidebar }) => {
         <ToastContainer />
         <div className="flex flex-col items-start gap-5">
           <div className="flex items-center gap-2">
-            <img src={logo} width={24} height={21} alt="Logo" />
-            <p className="text-secondary text-[24px] font-bold">{title}</p>
+            <img src={logo} width={200} height={200} alt="Logo" />
           </div>
 
           <div className="flex flex-col items-start gap-4">

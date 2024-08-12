@@ -55,6 +55,10 @@ module.exports = {
         secondary: "#9566C8",
         container: "#f5f5f5"
       },
+
+      animation: {
+        'spin-slow': 'spin 10s linear infinite',
+      },
     },
   },
   plugins: [require("tailwindcss-animate"), require('daisyui')],
