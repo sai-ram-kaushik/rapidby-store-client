@@ -4,6 +4,7 @@ import axios from "axios";
 const HomeDetails = () => {
   const [count, setCount] = useState("");
   const [orderPendingCount, setOrderPendingCount] = useState("");
+  const [storeAdminCount, setStoreAdminCount] = useState("");
   const { totalProduct, orderPending, totalCustomer } = data.productDetails;
 
   useEffect(() => {
@@ -37,6 +38,15 @@ const HomeDetails = () => {
       });
   });
 
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_API_ENDPOINT_URI}/api/store/get-count`)
+      .then((response) => {
+        setStoreAdminCount(response.data.data);
+        console.log(response.data.data);
+      });
+  }, []);
+
   return (
     <div className="w-full">
       <div className="flex flex-col md:flex-row items-center gap-4 w-full">
@@ -69,9 +79,7 @@ const HomeDetails = () => {
               <img src={orderPending.arrowIcon} />
             </div>
             <div className="flex items-center gap-2">
-              <h3 className="text-[56px] font-bold">
-                {orderPendingCount}
-              </h3>
+              <h3 className="text-[56px] font-bold">{orderPendingCount}</h3>
               <div className="flex flex-col items-start">
                 <p>10 New products</p>
                 <p>added last month</p>
@@ -90,9 +98,7 @@ const HomeDetails = () => {
               <img src={totalCustomer.arrowIcon} />
             </div>
             <div className="flex items-center gap-2">
-              <h3 className="text-[56px] font-bold">
-                {totalCustomer.totalNumber}
-              </h3>
+              <h3 className="text-[56px] font-bold">{storeAdminCount}</h3>
               <div className="flex flex-col items-start">
                 <p>10 New products</p>
                 <p>added last month</p>
