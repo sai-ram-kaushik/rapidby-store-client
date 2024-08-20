@@ -10,7 +10,7 @@ const HomeStats = () => {
   useEffect(() => {
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"];
     const revenueData = [
-      10000, 15000, 20000, 25000, 28000, 29000, 30000, 31000,
+      0, 0, 0, 0, 0, 0, 0, 0,
     ];
 
     if (chartContainer.current) {

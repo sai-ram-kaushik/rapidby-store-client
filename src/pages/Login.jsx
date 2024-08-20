@@ -9,40 +9,61 @@ import Cookies from "js-cookie";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [newPassword, setNewPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [showResetPassword, setShowResetPassword] = useState(false);
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!username || !password) {
-      toast.error("Username and password are required");
-    }
-
     setIsLoading(true);
 
     try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_API_ENDPOINT_URI}/api/store/login-store-admin`,
-        { username, password }
-      );
+      if (showResetPassword) {
+        if (!email || !newPassword) {
+          toast.error("Email and new password are required");
+          setIsLoading(false);
+          return;
+        }
 
-      const { accessToken, refreshToken, storeAdmin } = response.data.data;
+        const response = await axios.put(
+          `${import.meta.env.VITE_API_ENDPOINT_URI}/api/store/reset-password`,
+          { email, newPassword }
+        );
 
-      Cookies.set("accessToken", accessToken, { expires: 7 });
-      Cookies.set("refreshToken", refreshToken, { expires: 7 });
-      // Cookies.set("adminData", JSON.stringify(admin), { expires: 7 });
+        toast.success("Password successfully reset. You can now log in.");
+        setShowResetPassword(false);
+        setEmail("");
+        setNewPassword("");
+      } else {
+        if (!username || !password) {
+          toast.error("Username and password are required");
+          setIsLoading(false);
+          return;
+        }
 
-      login({ accessToken, refreshToken, storeData: storeAdmin });
-      toast.success("User SuccessFully LoggedIn");
-      setTimeout(() => {
-        navigate("/store-admin/dashboard");
-      }, 1000);
+        const response = await axios.post(
+          `${import.meta.env.VITE_API_ENDPOINT_URI}/api/store/login-store-admin`,
+          { username, password }
+        );
+
+        const { accessToken, refreshToken, storeAdmin } = response.data.data;
+
+        Cookies.set("accessToken", accessToken, { expires: 7 });
+        Cookies.set("refreshToken", refreshToken, { expires: 7 });
+
+        login({ accessToken, refreshToken, storeData: storeAdmin });
+        toast.success("User successfully logged in");
+        setTimeout(() => {
+          navigate("/store-admin/dashboard");
+        }, 1000);
+      }
     } catch (error) {
-      console.error("Something went wrong while logging in a user", error);
+      console.error("Error:", error);
       const errorMessage =
-        error.response?.data?.message || "Error while logging in";
+        error.response?.data?.message || "Error while processing your request";
       toast.error(errorMessage);
     } finally {
       setIsLoading(false);
@@ -54,7 +75,7 @@ const Login = () => {
       <ToastContainer />
       <div className="hidden lg:flex items-center justify-center flex-1 bg-white text-black">
         <div className="max-w-md text-center">
-          <svg
+        <svg
             xmlns="http://www.w3.org/2000/svg"
             width="524.67004"
             height="531.39694"
@@ -119,7 +140,7 @@ const Login = () => {
             <g>
               <path
                 id="uuid-d0b76542-8f08-4363-846d-0cc3b89caf22-176"
-                d="M212.17296,100.91704c4.34915-3.59367,9.72871-4.26258,12.0153-1.49438,2.28658,2.7682,.6142,7.92447-3.73698,11.51883-1.71841,1.45964-3.76141,2.48653-5.95805,2.99474l-18.6198,14.99379-6.8499-8.8877,19.08307-13.83763c.91373-2.06202,2.30807-3.87516,4.06638-5.28765h-.00002Z"
+                d="M212.17296,100.91704c4.34915-3.59367,9.72871-4.26258,12.0153-1.49438,2.28658,2.7682,.6142,7.92447-3.73698,11.51883-1.71841,1.45964-3.76141,2.48653-5.95805,2.99474l-18.6198,14.99379-6.8499-8.8877,19.08307-13.83763c.91373-2.062{/* Add any additional content here */}02,2.30807-3.87516,4.06638-5.28765h-.00002Z"
                 fill="#a0616a"
               />
               <path
@@ -286,58 +307,122 @@ const Login = () => {
       <div className="w-full bg-gray-100 lg:w-1/2 flex items-center justify-center">
         <div className="max-w-md w-full p-6">
           <h2 className="text-3xl font-semibold mb-6 text-black text-center">
-            Login
+            {showResetPassword ? "Reset Password" : "Login"}
           </h2>
 
           <form action="#" className="space-y-4" onSubmit={handleSubmit}>
-            <div>
-              <label
-                for="username"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Username <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                id="username"
-                name="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
-              />
-            </div>
+            {showResetPassword ? (
+              <>
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Email <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
+                  />
+                </div>
 
-            <div>
-              <label
-                for="password"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Password <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
-              />
-            </div>
+                <div>
+                  <label
+                    htmlFor="newPassword"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    New Password <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="password"
+                    id="newPassword"
+                    name="newPassword"
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
+                    className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
+                  />
+                </div>
+              </>
+            ) : (
+              <>
+                <div>
+                  <label
+                    htmlFor="username"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Username <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="password"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Password <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
+                  />
+                  <p
+                    className="text-sm flex justify-end mt-4 cursor-pointer text-blue-600"
+                    onClick={() => setShowResetPassword(true)}
+                  >
+                    Forgot Password?
+                  </p>
+                </div>
+              </>
+            )}
+
             <div className="flex flex-col items-start gap-2">
               <button
                 type="submit"
                 disabled={isLoading}
                 className="w-full bg-black text-white p-2 rounded-md hover:bg-gray-800 focus:outline-none focus:bg-black  focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300"
               >
-                {isLoading ? "Signing in..." : "Sign In"}
+                {isLoading
+                  ? showResetPassword
+                    ? "Resetting Password..."
+                    : "Signing in..."
+                  : showResetPassword
+                    ? "Reset Password"
+                    : "Sign In"}
               </button>
 
-              <p>
-                Don't have an account?{" "}
-                <Link to="/register" className="text-secondary">
-                  Create Your Store Now!!
-                </Link>
-              </p>
+              {!showResetPassword && (
+                <p>
+                  Don't have an account?{" "}
+                  <Link to="/register" className="text-secondary">
+                    Create Your Store Now!!
+                  </Link>
+                </p>
+              )}
+
+              {showResetPassword && (
+                <p
+                  className="text-sm flex justify-end mt-4 cursor-pointer text-blue-600"
+                  onClick={() => setShowResetPassword(false)}
+                >
+                  Back to Login
+                </p>
+              )}
             </div>
           </form>
         </div>
