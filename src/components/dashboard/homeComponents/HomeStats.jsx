@@ -1,17 +1,31 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Chart from "chart.js/auto";
 import data from "../../../data/Home.json";
+import axios from "axios";
 
 const HomeStats = () => {
   const { products } = data.sellingProducts.topSellingProduct;
   const chartContainer = useRef(null);
   const chartInstance = useRef(null);
+  const [topProducts, setTopProducts] = useState([]);
+
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    axios
+      .get(`${import.meta.env.VITE_API_ENDPOINT_URI}/api/store/get-products`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setTopProducts(response.data.data);
+        console.log(response.data.data);
+      });
+  }, []);
 
   useEffect(() => {
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"];
-    const revenueData = [
-      0, 0, 0, 0, 0, 0, 0, 0,
-    ];
+    const revenueData = [0, 0, 0, 0, 0, 0, 0, 0];
 
     if (chartContainer.current) {
       const ctx = chartContainer.current.getContext("2d");
@@ -71,7 +85,7 @@ const HomeStats = () => {
             </div>
 
             <div className="flex flex-col items-start gap-4 mt-4 w-full">
-              {products.map((product, index) => (
+              {topProducts.slice(0, 4).map((product, index) => (
                 <div
                   key={index}
                   className="flex flex-col md:flex-row items-center justify-between border w-full p-3 rounded-lg"
