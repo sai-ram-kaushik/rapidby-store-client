@@ -1,10 +1,13 @@
 import React from "react";
+import recoginition from "/recognitionAndAward.png";
 
 const SpinningText = () => {
   return (
     <div className="flex items-center justify-center bg-black mt-12 md:mt-0">
       <div className="relative flex items-center justify-center">
-        <div className="w-24 h-24 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full animate-pulse"></div>
+        <div className="">
+          <img src={recoginition} width={150} height={150} />
+        </div>
         <svg
           className="absolute w-64 h-64 animate-spin-slow"
           viewBox="0 0 200 200"

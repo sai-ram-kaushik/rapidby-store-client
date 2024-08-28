@@ -125,7 +125,7 @@
       {
         "name": "James",
         "username": "@james",
-        "body": "I'm at a loss for words. This is amazing. I love it.",
+        "body": "“These top-notch products have not only elevated my brand but also significantly increased my revenue. Thanks a lot”",
         "img": "/testimonial.png"
       }
     ],
@@ -164,13 +164,27 @@
       {
         "name": "James",
         "username": "@james",
-        "body": "I'm at a loss for words. This is amazing. I love it.",
+        "body": "“These top-notch products have not only elevated my brand but also significantly increased my revenue. Thanks a lot”",
         "img": "/testimonial.png"
       }
     ]
   },
 
   "faq": {
-    "title": "Frequently Asked Questions"
+    "questions": [
+      {
+        "question": "What is Rapidby and how does it work?",
+        "answer": "Hello"
+      },
+      {
+        "question": "What is Rapidby and how does it work?",
+        "answer": "Hello"
+      },
+      {
+        "question": "What is Rapidby and how does it work?",
+        "answer": "Hello"
+      },
+      { "question": "What is Rapidby and how does it work?", "answer": "Hello" }
+    ]
   }
 }

@@ -3,6 +3,15 @@ import Marquee from "react-fast-marquee";
 
 const Testimonials = ({ testimonials }) => {
   const { title, leftReviews, rightReviews } = testimonials;
+
+  const colors = [
+    "bg-purple-100",
+    "bg-blue-100",
+    "bg-green-100",
+    "bg-yellow-100",
+    "bg-pink-100",
+  ];
+
   return (
     <div className="w-full px-5 md:px-10 py-10 bg-primary relative md:h-[85vh]">
       <div className="flex items-start justify-start w-full">
@@ -11,11 +20,15 @@ const Testimonials = ({ testimonials }) => {
             {title}
           </h3>
 
+          <p className="absolute text-background/20 text-[40px] md:text-[176px] z-[980px] top-3 md:top-10 left-1/2 transform -translate-x-1/2 text-center">
+            TESTIMONIALS
+          </p>
+
           <Marquee pauseOnHover={true} autoFill={false} speed={100}>
             <div className="flex items-start gap-10">
               {leftReviews.map((review, index) => (
                 <div
-                  className="w-full max-w-md bg-purple-100 p-6 rounded-lg flex items-center shadow-md"
+                  className={`w-full max-w-md ${colors[index % colors.length]} p-6 rounded-lg flex items-center shadow-md`}
                   key={index}
                 >
                   <div className="flex-1">
@@ -49,7 +62,7 @@ const Testimonials = ({ testimonials }) => {
             <div className="flex items-start gap-10">
               {rightReviews.map((review, index) => (
                 <div
-                  className="w-full max-w-md bg-purple-100 p-6 rounded-lg flex items-center shadow-md"
+                  className={`w-full max-w-md ${colors[index % colors.length]} p-6 rounded-lg flex items-center shadow-md`}
                   key={index}
                 >
                   <div className="flex-1">

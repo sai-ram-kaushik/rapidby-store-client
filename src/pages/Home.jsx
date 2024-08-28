@@ -85,7 +85,7 @@ const Home = ({ home }) => {
       <Features features={data.features} />
       <PlatformDetails platformDetails={data.platformDetails} />
       <Testimonials testimonials={data.testimonials} />
-      <FAQ />
+      <FAQ faqQuestion={data.faq} />
       <Subscribe />
     </>
   );

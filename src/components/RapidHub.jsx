@@ -15,11 +15,15 @@ const RapidHub = () => {
   return (
     <div className="w-full px-5 lg:px-10 py-10 bg-primary">
       <div className="flex items-center justify-center w-full">
-        <div className="flex flex-col items-center w-full">
-          <h3 className="text-[#CF6FDC] text-[25px] md:text-[38px] font-bold font-heading">
+        <div className="flex flex-col items-center w-full relative">
+          <h3 className="text-[#CF6FDC] text-[25px] md:text-[44px] font-bold font-heading">
             Rapid hub
           </h3>
-          <p>Delivered Door-to-Door</p>
+          <p className="text-background font-heading text-[22px] md:text-[44px] z-[990px]">
+            Delivered Door-to-Door
+          </p>
+
+          <p className="absolute text-background/20 text-[60px] md:text-[232px] z-[980px] top-3 md:top-0">PRODUCTS</p>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 items-center justify-center gap-4 py-10">
             {images.map((image, index) => (
