@@ -19,6 +19,8 @@ import DashboardCatalog from "./pages/dashboard/DashboardCatalog";
 import DashboardOrdersPage from "./pages/dashboard/DashboardOrdersPage";
 import DashboardStoreSettings from "./pages/dashboard/DashboardStoreSettings";
 import DashboardCustomerSupport from "./pages/dashboard/DashboardCustomerSupport";
+import DashboardReport from "./pages/dashboard/DashboardReport";
+import DashboardCustomDesign from "./pages/dashboard/DashboardCustomDesign";
 
 const App = () => {
   return (
@@ -76,6 +78,8 @@ const DashboardComponents = () => {
           path="/customer-support"
           element={<DashboardCustomerSupport />}
         />
+        <Route path="/report" element={<DashboardReport />} />
+        <Route path="/custom-design" element={<DashboardCustomDesign />} />
       </Routes>
     </DashboardLayout>
   );

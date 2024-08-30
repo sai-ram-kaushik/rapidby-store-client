@@ -19,9 +19,19 @@
         "path": "/store-admin/dashboard/orders"
       },
       {
+        "label": "Report",
+        "icon": "/dashboardIcons/report.svg",
+        "path": "/store-admin/dashboard/report"
+      },
+      {
         "label": "Store Settings",
         "icon": "/dashboardIcons/store.svg",
         "path": "/store-admin/dashboard/store-settings"
+      },
+      {
+        "label": "Custom Designs",
+        "icon": "/dashboardIcons/custom.svg",
+        "path": "/store-admin/dashboard/custom-design"
       },
       {
         "label": "Customer Support",

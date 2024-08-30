@@ -23,7 +23,7 @@ const RapidHub = () => {
             Delivered Door-to-Door
           </p>
 
-          <p className="absolute text-background/20 text-[60px] md:text-[232px] z-[980px] top-3 md:top-0">PRODUCTS</p>
+          <p className="absolute text-background/20 text-[60px] md:text-[232px] z-[980px] top-3 md:top-0 font-bold">PRODUCTS</p>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 items-center justify-center gap-4 py-10">
             {images.map((image, index) => (

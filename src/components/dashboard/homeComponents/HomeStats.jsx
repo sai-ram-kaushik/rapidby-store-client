@@ -1,10 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import Chart from "chart.js/auto";
-import data from "../../../data/Home.json";
 import axios from "axios";
 
 const HomeStats = () => {
-  const { products } = data.sellingProducts.topSellingProduct;
   const chartContainer = useRef(null);
   const chartInstance = useRef(null);
   const [topProducts, setTopProducts] = useState([]);
@@ -26,6 +24,16 @@ const HomeStats = () => {
   useEffect(() => {
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"];
     const revenueData = [0, 0, 0, 0, 0, 0, 0, 0];
+    const backgroundColors = [
+      "#9C8AEF", // Jan
+      "#99FFB7", // Feb
+      "#0F0F0F", // Mar
+      "#99DEFF", // Apr
+      "#9EC4D8", // May
+      "#99FFB7", // Jun
+      "#99FFB7", // Jul
+      "#99FFB7", // Aug
+    ];
 
     if (chartContainer.current) {
       const ctx = chartContainer.current.getContext("2d");
@@ -41,19 +49,50 @@ const HomeStats = () => {
           datasets: [
             {
               label: "Revenue",
-              backgroundColor: "rgba(54, 162, 235, 0.5)",
+              backgroundColor: backgroundColors,
               borderColor: "rgba(54, 162, 235, 1)",
               borderWidth: 2,
               data: revenueData,
+              borderRadius: 10,
             },
           ],
         },
         options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              display: false,
+            },
+            title: {
+              display: true,
+              // text: "Revenue so far",
+              font: {
+                size: 20,
+              },
+              color: "#000",
+              align: "start",
+            },
+          },
           scales: {
             y: {
               beginAtZero: true,
-              stepSize: 10000,
-              max: 30000,
+              ticks: {
+                callback: function (value) {
+                  return value + "K";
+                },
+                color: "#B3B3B3",
+              },
+              grid: {
+                display: false,
+              },
+            },
+            x: {
+              ticks: {
+                color: "#B3B3B3",
+              },
+              grid: {
+                display: false,
+              },
             },
           },
         },
@@ -81,7 +120,7 @@ const HomeStats = () => {
           <div className="flex flex-col items-start w-full">
             <div className="flex items-center justify-between w-full">
               <h3 className="text-xl font-semibold">Top selling product</h3>
-              <p className="text-secondary cursor-pointer">See All &rarr; </p>
+              <p className="text-secondary cursor-pointer">See All &rarr;</p>
             </div>
 
             <div className="flex flex-col items-start gap-4 mt-4 w-full">

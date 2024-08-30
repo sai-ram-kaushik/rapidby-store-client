@@ -20,6 +20,11 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (mobileNumber.length !== 10) {
+      toast.error("Mobile number must be exactly 10 digits");
+      return;
+    }
+
     const formData = new FormData();
     formData.append("username", username);
     formData.append("email", email);
@@ -130,7 +135,7 @@ const Register = () => {
             <g>
               <path
                 id="uuid-d0b76542-8f08-4363-846d-0cc3b89caf22-176"
-                d="M212.17296,100.91704c4.34915-3.59367,9.72871-4.26258,12.0153-1.49438,2.28658,2.7682,.6142,7.92447-3.73698,11.51883-1.71841,1.45964-3.76141,2.48653-5.95805,2.99474l-18.6198,14.99379-6.8499-8.8877,19.08307-13.83763c.91373-2.06202,2.30807-3.87516,4.06638-5.28765h-.00002Z"
+                d="M212.17296,100.91704c4.34915-3.59367,9.72871-4.26258,12.0153-1.49438,2.28658,2.7682,.6142,7.92447-3.73698,11.51883-1.71841,1.45964-3.76141,2.48653-5.95805,2.99474l-18.6198,14.99379-6.8499-8.8877,19.08307-13.83763c.91373-2.062{/* Add any additional content here */}02,2.30807-3.87516,4.06638-5.28765h-.00002Z"
                 fill="#a0616a"
               />
               <path
@@ -376,7 +381,7 @@ const Register = () => {
                   htmlFor="facebookUrl"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Facebook Url 
+                  Facebook Url
                 </label>
                 <input
                   type="text"
@@ -395,7 +400,7 @@ const Register = () => {
                   htmlFor="instagramUrl"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Instagram Url 
+                  Instagram Url
                 </label>
                 <input
                   type="text"

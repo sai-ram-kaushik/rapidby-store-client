@@ -20,7 +20,7 @@ const Testimonials = ({ testimonials }) => {
             {title}
           </h3>
 
-          <p className="absolute text-background/20 text-[40px] md:text-[176px] z-[980px] top-3 md:top-10 left-1/2 transform -translate-x-1/2 text-center">
+          <p className="absolute text-background/20 text-[40px] md:text-[176px] z-[980px] top-3 md:top-10 left-1/2 transform -translate-x-1/2 text-center font-bold">
             TESTIMONIALS
           </p>
 

@@ -75,7 +75,7 @@ const Login = () => {
       <ToastContainer />
       <div className="hidden lg:flex items-center justify-center flex-1 bg-white text-black">
         <div className="max-w-md text-center">
-        <svg
+          <svg
             xmlns="http://www.w3.org/2000/svg"
             width="524.67004"
             height="531.39694"
