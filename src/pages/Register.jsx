@@ -17,11 +17,44 @@ const Register = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
+  // Function to validate password
+  const validatePassword = (password) => {
+    const minLength = /^(?=.{8,})/;
+    const hasUppercase = /^(?=.*[A-Z])/;
+    const hasLowercase = /^(?=.*[a-z])/;
+    const hasNumber = /^(?=.*[0-9])/;
+    const hasSpecialChar = /^(?=.*[!@#$%^&*])/;
+
+    if (!minLength.test(password)) {
+      return "Password must be at least 8 characters long";
+    }
+    if (!hasUppercase.test(password)) {
+      return "Password must contain at least one uppercase letter";
+    }
+    if (!hasLowercase.test(password)) {
+      return "Password must contain at least one lowercase letter";
+    }
+    if (!hasNumber.test(password)) {
+      return "Password must contain at least one number";
+    }
+    if (!hasSpecialChar.test(password)) {
+      return "Password must contain at least one special character";
+    }
+
+    return null;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (mobileNumber.length !== 10) {
       toast.error("Mobile number must be exactly 10 digits");
+      return;
+    }
+
+    const passwordError = validatePassword(password);
+    if (passwordError) {
+      toast.error(passwordError);
       return;
     }
 
@@ -463,6 +496,7 @@ const Register = () => {
                 className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
               />
             </div>
+
             <div className="flex flex-col items-start gap-2">
               <button
                 type="submit"
