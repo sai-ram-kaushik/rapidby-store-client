@@ -1,30 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@/utils/Button";
+import axios from "axios";
 
 const CustomDesignContainer = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isChatOpen, setIsChatOpen] = useState(false);
 
-  const data = [
-    {
-      id: "#13B23",
-      product: "Air Jordan 1 Retro High OG’ Black & White",
-      imageUrl: "/shoe.png",
-      time: "30 Hours",
-    },
-    {
-      id: "#13B234",
-      product: "Air Jordan 1 Retro High OG’ Black & White",
-      imageUrl: "/shoe.png",
-      time: "30 Hours",
-    },
-    {
-      id: "#13B25",
-      product: "Air Jordan 1 Retro High OG’ Black & White",
-      imageUrl: "/shoe.png",
-      time: "30 Hours",
-    },
-  ];
+  const [productData, setProductData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(
+        `${import.meta.env.VITE_API_ENDPOINT_URI}/api/store/get-all-catalogs`
+      )
+      .then((repsonse) => {
+        setProductData(repsonse.data.data);
+        console.log(repsonse.data.data);
+      });
+  }, []);
 
   const handleProductClick = (product) => {
     setSelectedProduct(product);
@@ -63,22 +56,24 @@ const CustomDesignContainer = () => {
               </tr>
             </thead>
             <tbody>
-              {data.map((item) => (
+              {productData.map((item) => (
                 <tr
-                  key={item.id}
+                  key={item._id}
                   className="border-b hover:bg-gray-50 cursor-pointer"
                   onClick={() => handleProductClick(item)}
                 >
-                  <td className="py-4 px-4">{item.id}</td>
-                  <td className="flex items-center py-4 px-4">
+                  <td className="py-4 px-4 text-center">
+                    #{item._id.slice(0, 7)}
+                  </td>
+                  <td className="flex items-center py-4 px-4 justify-center">
                     <img
                       src={item.imageUrl}
-                      alt={item.product}
+                      alt={item.name}
                       className="w-12 h-12 object-cover rounded mr-4"
                     />
-                    <span>{item.product}</span>
+                    <span>{item.name}</span>
                   </td>
-                  <td className="py-4 px-4">{item.time}</td>
+                  <td className="py-4 px-4 text-center">{item.updatedAt}</td>
                 </tr>
               ))}
             </tbody>
@@ -102,13 +97,13 @@ const CustomDesignContainer = () => {
             <div className="flex items-center">
               <img
                 src={selectedProduct.imageUrl}
-                alt={selectedProduct.product}
+                alt={selectedProduct.name}
                 className="w-10 h-10 object-cover rounded mr-3"
               />
               <div>
-                <h3 className="text-lg">{selectedProduct.product}</h3>
+                <h3 className="text-lg">{selectedProduct.name}</h3>
                 <p className="text-sm text-gray-500">
-                  Ticket ID: {selectedProduct.id}
+                  Ticket ID: {selectedProduct._id.slice(0, 7)}
                 </p>
               </div>
             </div>

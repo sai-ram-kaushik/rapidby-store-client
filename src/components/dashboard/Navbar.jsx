@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import searchIcon from "/dashboardIcons/search.svg";
 import notificationIcon from "/dashboardIcons/notification.svg";
-import avatar from "/dashboardIcons/avatar.svg";
 import { AuthContext } from "../../context/AuthContext";
 import { IoMdMenu } from "react-icons/io";
 import { IoMdClose } from "react-icons/io";
@@ -29,7 +28,7 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-4">
           <img src={notificationIcon} />
           <p>|</p>
-          <img src={avatar} />
+          <img src={authData.storeData.imageUrl} width={50} height={50} className="rounded-full"/>
           {authData.accessToken ? (
             <p>{authData.storeData.username}</p>
           ) : (

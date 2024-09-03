@@ -6,7 +6,7 @@ const OrderDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/store/order-metrix`)
+      .get(`${import.meta.env.VITE_API_ENDPOINT_URI}/api/store/order-metrix`)
       .then((response) => {
         setMonthlyMatrix(response.data.data);
       });
