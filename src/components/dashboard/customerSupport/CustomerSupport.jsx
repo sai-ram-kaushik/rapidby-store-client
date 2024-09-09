@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 const CustomerSupport = () => {
   const [selectedTicket, setSelectedTicket] = useState(null);
   const [tickets, setTickets] = useState([]);
+  const [ticketCount, setTicketCount] = useState("");
   const [openDropdown, setOpenDropdown] = useState(null);
   const [replyMessage, setReplyMessage] = useState("");
   const [isChatOpen, setIsChatOpen] = useState(false);
@@ -13,6 +14,16 @@ const CustomerSupport = () => {
       .get(`${import.meta.env.VITE_API_ENDPOINT_URI}/api/store/get-all-tickets`)
       .then((response) => {
         setTickets(response.data.data);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(
+        `${import.meta.env.VITE_API_ENDPOINT_URI}/api/store/get-ticket-count`
+      )
+      .then((response) => {
+        setTicketCount(response.data.data);
       });
   }, []);
 
@@ -27,9 +38,12 @@ const CustomerSupport = () => {
 
   const updateTicketStatus = (ticketId, status) => {
     axios
-      .put(`${import.meta.env.VITE_API_ENDPOINT_URI}/api/store/update-ticket-status/${ticketId}`, {
-        status: status,
-      })
+      .put(
+        `${import.meta.env.VITE_API_ENDPOINT_URI}/api/store/update-ticket-status/${ticketId}`,
+        {
+          status: status,
+        }
+      )
       .then((response) => {
         setTickets((prevTickets) =>
           prevTickets.map((ticket) =>
@@ -44,9 +58,12 @@ const CustomerSupport = () => {
     if (!replyMessage.trim()) return;
 
     axios
-      .post(`${import.meta.env.VITE_API_ENDPOINT_URI}/api/store/${ticketId}/reply-to-ticket`, {
-        message: replyMessage,
-      })
+      .post(
+        `${import.meta.env.VITE_API_ENDPOINT_URI}/api/store/${ticketId}/reply-to-ticket`,
+        {
+          message: replyMessage,
+        }
+      )
       .then((response) => {
         setSelectedTicket((prevTicket) => ({
           ...prevTicket,
@@ -74,11 +91,15 @@ const CustomerSupport = () => {
         <h2 className="text-lg font-semibold mb-2 sm:mb-0">Tickets</h2>
         <ul className="flex flex-wrap space-x-4">
           <li className="text-purple-600 font-semibold cursor-pointer">
-            All(170)
+            All({ticketCount.totalTickets})
           </li>
-          <li className="cursor-pointer">Open(60)</li>
-          <li className="cursor-pointer">In Process(60)</li>
-          <li className="cursor-pointer">Closed(50)</li>
+          <li className="cursor-pointer">Open({ticketCount.openTickets})</li>
+          <li className="cursor-pointer">
+            In Process({ticketCount.inProcessTickets})
+          </li>
+          <li className="cursor-pointer">
+            Closed({ticketCount.closedTickets})
+          </li>
         </ul>
       </div>
 
