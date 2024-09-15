@@ -18,7 +18,6 @@ const ProductTable = () => {
       })
       .then((response) => {
         setProducts(response.data.data);
-        console.log(response.data.data);
       });
   }, []);
 

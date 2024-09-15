@@ -22,7 +22,7 @@ const HomeDetails = () => {
       )
       .then((response) => {
         setCount(response.data.data);
-        console.log(response.data.data);
+  
       })
       .catch((error) => {
         console.error("Error fetching the product count", error);
@@ -44,7 +44,6 @@ const HomeDetails = () => {
       .get(`${import.meta.env.VITE_API_ENDPOINT_URI}/api/store/get-count`)
       .then((response) => {
         setStoreAdminCount(response.data.data);
-        console.log(response.data.data);
       });
   }, []);
 

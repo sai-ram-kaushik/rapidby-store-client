@@ -15,7 +15,6 @@ const CustomDesignContainer = () => {
       )
       .then((repsonse) => {
         setProductData(repsonse.data.data);
-        console.log(repsonse.data.data);
       });
   }, []);
 

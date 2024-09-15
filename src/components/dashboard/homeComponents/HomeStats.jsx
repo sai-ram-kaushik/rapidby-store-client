@@ -6,9 +6,12 @@ const HomeStats = () => {
   const chartContainer = useRef(null);
   const chartInstance = useRef(null);
   const [topProducts, setTopProducts] = useState([]);
+  const [revenueData, setRevenueData] = useState([0, 0, 0, 0, 0, 0, 0, 0]); // Default revenue data for 8 months
 
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
+
+    // Fetch top selling products
     axios
       .get(`${import.meta.env.VITE_API_ENDPOINT_URI}/api/store/get-products`, {
         headers: {
@@ -19,11 +22,28 @@ const HomeStats = () => {
         setTopProducts(response.data.data);
         console.log(response.data.data);
       });
+
+    // Fetch revenue data for months
+    axios
+      .get(
+        `${import.meta.env.VITE_API_ENDPOINT_URI}/api/store/get-revenue-per-month`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((response) => {
+        const fetchedRevenueData = response.data.data.revenueByMonth;
+        setRevenueData(fetchedRevenueData); // Update revenue data with the fetched values
+      })
+      .catch((error) => {
+        console.error("Error fetching revenue data:", error);
+      });
   }, []);
 
   useEffect(() => {
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"];
-    const revenueData = [0, 0, 0, 0, 0, 0, 0, 0];
     const backgroundColors = [
       "#9C8AEF", // Jan
       "#99FFB7", // Feb
@@ -39,7 +59,7 @@ const HomeStats = () => {
       const ctx = chartContainer.current.getContext("2d");
 
       if (chartInstance.current) {
-        chartInstance.current.destroy();
+        chartInstance.current.destroy(); // Destroy the previous chart instance to avoid re-render issues
       }
 
       chartInstance.current = new Chart(ctx, {
@@ -52,7 +72,7 @@ const HomeStats = () => {
               backgroundColor: backgroundColors,
               borderColor: "rgba(54, 162, 235, 1)",
               borderWidth: 2,
-              data: revenueData,
+              data: revenueData, // Set the updated revenue data
               borderRadius: 10,
             },
           ],
@@ -65,7 +85,6 @@ const HomeStats = () => {
             },
             title: {
               display: true,
-              // text: "Revenue so far",
               font: {
                 size: 20,
               },
@@ -104,7 +123,7 @@ const HomeStats = () => {
         chartInstance.current.destroy();
       }
     };
-  }, []);
+  }, [revenueData]); // Re-render chart whenever revenueData changes
 
   return (
     <div className="w-full">

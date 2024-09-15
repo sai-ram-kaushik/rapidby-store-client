@@ -84,7 +84,6 @@ const Register = () => {
         }
       );
 
-      console.log("User Registered Successfully!!", response.data);
       toast.success("User Registered Successfully!! ");
       navigate("/login");
     } catch (error) {

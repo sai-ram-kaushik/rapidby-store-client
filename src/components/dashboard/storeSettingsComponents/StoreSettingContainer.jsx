@@ -33,7 +33,6 @@ const StoreSettingContainer = () => {
       )
       .then((response) => {
         setStoreAdminDetails(response.data.data);
-        // console.log(response.data.data);
       });
   }, []);
 
@@ -60,7 +59,7 @@ const StoreSettingContainer = () => {
           const productResponse = await axios.get(
             `${import.meta.env.VITE_API_ENDPOINT_URI}/api/public/store/name/${storeName}/products`
           );
-          console.log(productResponse);
+  
           setProducts(productResponse.data.data);
         }
       } catch (error) {

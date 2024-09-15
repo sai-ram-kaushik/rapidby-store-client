@@ -53,8 +53,6 @@ const AddCatalogPopup = ({ onClose }) => {
           },
         }
       );
-
-      console.log("Product added successfully: ", response.data);
       onClose(); // Close the popup after successful submission
     } catch (error) {
       console.error(

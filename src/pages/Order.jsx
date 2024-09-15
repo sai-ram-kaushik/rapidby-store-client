@@ -24,8 +24,6 @@ const Order = () => {
           pincode,
         }
       );
-
-      console.log(response.data.data);
     } catch (error) {
       console.log("getting error", error);
     }
