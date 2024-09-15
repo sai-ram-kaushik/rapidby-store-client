@@ -8,7 +8,6 @@ const StoreContainer = () => {
   const { authData } = useContext(AuthContext);
   const [products, setProducts] = useState([]);
   const [storeData, setStoreData] = useState(null);
-  const [copySuccess, setCopySuccess] = useState("");
   const { storeName } = useParams();
 
   useEffect(() => {
@@ -107,16 +106,6 @@ const StoreContainer = () => {
                 />
               </a>
             </div>
-
-            <button
-              onClick={handleCopy}
-              className="mt-4 px-4 py-2 bg-secondary text-background rounded-lg"
-            >
-              Share Profile
-            </button>
-            {copySuccess && (
-              <div className="mt-2 text-green-600">{copySuccess}</div>
-            )}
 
             <div className="mt-5 w-full">
               <div className="carousel carousel-center max-w-md p-4 space-x-4 bg-transparent rounded-box">

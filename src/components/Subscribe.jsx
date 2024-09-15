@@ -6,7 +6,7 @@ const Subscribe = () => {
   return (
     <div className="w-full bg-background py-10 px-5 md:px-10">
       <div className="flex flex-col items-center justify-center w-full gap-5">
-        <h3 className="text-[#48246C5C] text-[40px] md:text-[80px] max-w-[1150px] text-center font-bold md:leading-[96px] text-heading">
+        <h3 className="text-[#48246C5C] text-[40px] md:text-[80px] max-w-[1150px] text-center font-bold md:leading-[96px] font-heading">
           Join Rapidby today and ignite your influence!
         </h3>
 

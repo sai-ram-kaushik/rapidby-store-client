@@ -28,7 +28,7 @@ const Testimonials = ({ testimonials }) => {
             <div className="flex items-start gap-10">
               {leftReviews.map((review, index) => (
                 <div
-                  className={`w-full max-w-md ${colors[index % colors.length]} p-6 rounded-lg flex items-center shadow-md`}
+                  className={`w-full max-w-md ${colors[index % colors.length]} p-6 rounded-lg flex items-center shadow-md mr-5`} // Added margin-right to ensure gap between boxes
                   key={index}
                 >
                   <div className="flex-1">
@@ -62,7 +62,7 @@ const Testimonials = ({ testimonials }) => {
             <div className="flex items-start gap-10">
               {rightReviews.map((review, index) => (
                 <div
-                  className={`w-full max-w-md ${colors[index % colors.length]} p-6 rounded-lg flex items-center shadow-md`}
+                  className={`w-full max-w-md ${colors[index % colors.length]} p-6 rounded-lg flex items-center shadow-md mr-5`} // Added margin-right to ensure gap between boxes
                   key={index}
                 >
                   <div className="flex-1">

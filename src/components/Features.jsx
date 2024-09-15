@@ -11,11 +11,15 @@ const Features = ({ features }) => {
 
   const handleMouseEnter = (e) => {
     const imgElement = e.currentTarget;
-    imgElement.classList.add('flicked');
+    imgElement.classList.add("flicked");
 
-    imgElement.addEventListener('animationend', () => {
-      imgElement.classList.remove('flicked');
-    }, { once: true });
+    imgElement.addEventListener(
+      "animationend",
+      () => {
+        imgElement.classList.remove("flicked");
+      },
+      { once: true }
+    );
   };
 
   return (

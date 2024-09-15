@@ -70,7 +70,7 @@ const SingleProduct = () => {
   }
 
   return (
-    <div className="w-full py-10 px-5 md:px-10">
+    <div className="w-full py-10 px-5 md:px-10 min-h-screen">
       <ToastContainer />
       <div className="flex items-start">
         <Link to={`/store/${storeName}`}>

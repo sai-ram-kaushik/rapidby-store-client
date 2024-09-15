@@ -30,7 +30,7 @@ const AboutUs = ({ aboutUs }) => {
             </p>
           </div>
 
-          <div className="md:w-[644px] md:h-[403px] rounded-xl relative border">
+          <div className="md:w-[644px] md:h-[403px] rounded-xl relative">
             <img
               src={noiceBg}
               className="h-[403px] w-full rounded-xl"
@@ -61,7 +61,7 @@ const AboutUs = ({ aboutUs }) => {
         </div>
 
         <div className="flex flex-col md:flex-row items-center gap-10">
-          <div className="md:w-[644px] md:h-[403px] rounded-xl relative border">
+          <div className="md:w-[644px] md:h-[403px] rounded-xl relative ">
             <img
               src={noiceBg}
               className="h-[403px] w-full rounded-xl"
@@ -83,7 +83,7 @@ const AboutUs = ({ aboutUs }) => {
             </div>
           </div>
 
-          <div className="md:w-[644px] md:h-[403px] rounded-xl relative border">
+          <div className="md:w-[644px] md:h-[403px] rounded-xl relative ">
             <img
               src={noiceBg}
               className="h-[403px] w-full rounded-xl"
@@ -122,7 +122,7 @@ const AboutUs = ({ aboutUs }) => {
             </h3>
 
             <div className="flex items-center justify-center flex-wrap gap-4 py-5">
-              <div className="md:w-[273px] md:h-[211px] rounded-xl relative border">
+              <div className="md:w-[273px] md:h-[211px] rounded-xl relative ">
                 <img
                   src={noiceBg}
                   className="h-[211px] w-full rounded-xl"
@@ -135,7 +135,7 @@ const AboutUs = ({ aboutUs }) => {
                 </div>
               </div>
 
-              <div className="md:w-[273px] md:h-[211px] rounded-xl relative border">
+              <div className="md:w-[273px] md:h-[211px] rounded-xl relative ">
                 <img
                   src={noiceBg}
                   className="h-[211px] w-full rounded-xl"
@@ -153,7 +153,7 @@ const AboutUs = ({ aboutUs }) => {
                 </div>
               </div>
 
-              <div className="md:w-[273px] md:h-[211px] rounded-xl relative border">
+              <div className="md:w-[273px] md:h-[211px] rounded-xl relative ">
                 <img
                   src={noiceBg}
                   className="h-[211px] w-full rounded-xl"

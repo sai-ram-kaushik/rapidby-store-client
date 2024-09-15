@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import searchIcon from "/dashboardIcons/search.svg";
+import Button from "@/utils/Button";
 
 const ProductTable = () => {
   const [products, setProducts] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
@@ -20,15 +22,43 @@ const ProductTable = () => {
       });
   }, []);
 
+  const isActiveTab = (path) => location.pathname === path;
+
   return (
     <div className="w-[350px] sm:w-full bg-background p-5 rounded-xl">
-      <div className="flex items-start">
-        <h3 className="text-[14px] md:text-[20px] font-bold font-heading">Products</h3>
+      <div className="flex items-start justify-between w-full">
+        <h3 className="text-[14px] md:text-[20px] font-bold">
+          Products
+        </h3>
+
+        <Link to="/store-admin/dashboard/products/catalogs">
+          <button className="rounded-xl text-background bg-[#48246C] px-5 py-2">
+            Add Product +
+          </button>
+        </Link>
       </div>
-      <div className="flex flex-col md:flex-row items-start justify-between gap-5">
+      <div className="flex flex-col md:flex-row items-start justify-between gap-5 mt-5">
         <div className="flex items-center gap-3">
-          <Link to="/store/dashboard/products">My Products</Link>
-          <Link to="/store-admin/dashboard/products/catalogs">Catalog</Link>
+          <Link
+            to="/store-admin/dashboard/products"
+            className={`${
+              isActiveTab("/store-admin/dashboard/products")
+                ? "bg-container p-2 rounded-xl shadow-md"
+                : ""
+            }`}
+          >
+            My Products
+          </Link>
+          <Link
+            to="/store-admin/dashboard/products/catalogs"
+            className={`${
+              isActiveTab("/store-admin/dashboard/products/catalogs")
+                ? "font-bold text-blue-600"
+                : "text-gray-600"
+            }`}
+          >
+            Catalog
+          </Link>
         </div>
 
         <div className="flex max-w-[290px] gap-2 bg-gray-100 p-2 rounded-xl">

@@ -14,12 +14,9 @@ const PlatformDetails = ({ platformDetails }) => {
     secondBoxImage,
   } = platformDetails;
 
-
   return (
     <div className="px-5 md:px-10 py-10 w-full bg-primary">
-      <div
-        className="flex flex-col items-start justify-center w-full"
-      >
+      <div className="flex flex-col items-start justify-center w-full">
         <div className="flex flex-col md:flex-row items-start justify-center w-full gap-10">
           <div className="max-w-[664px] h-[600px] md:h-[965px] border bg-gradient-to-r from-[#EF7447] to-[#DA57AA] px-10 py-10 rounded-xl relative">
             <div className="flex flex-col items-start gap-2">
@@ -57,7 +54,7 @@ const PlatformDetails = ({ platformDetails }) => {
 
               <Button
                 title={secondBoxButtonTitle}
-                className="bg-transparent border border-background py-4 mt-5 text-[16px] md:text-[24px] text-background"
+                className="bg-transparent border border-background py-4 mt-5 text-[16px] md:text-[24px] text-background hover:bg-background hover:text-primary duration-300"
               />
 
               <img src={secondBoxImage} className="absolute bottom-0 right-0" />

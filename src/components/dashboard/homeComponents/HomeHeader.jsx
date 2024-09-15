@@ -11,7 +11,7 @@ const HomeHeader = () => {
       <div className="flex flex-col md:flex-row items-start justify-between w-full gap-3">
         <div className="flex flex-col items-start">
           {authData.accessToken ? (
-            <p className="text-[24px] text-secondary font-bold">
+            <p className="text-[24px] text-[#48246C] font-bold">
               Hello, {authData.storeData.username}{" "}
             </p>
           ) : (

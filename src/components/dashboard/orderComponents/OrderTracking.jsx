@@ -4,12 +4,14 @@ import searchIcon from "/dashboardIcons/search.svg";
 import axios from "axios";
 import moment from "moment-timezone";
 import { useDebounce } from "../../hooks/useDebounce";
+import OrderTrackingDetails from "./OrderTrackingDetails";
 
 const OrderTracking = () => {
   const [orders, setOrders] = useState([]);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const debouncedSearchQuery = useDebounce(searchQuery, 300);
+  const [selectedOrder, setSelectedOrder] = useState(null);
 
   useEffect(() => {
     axios
@@ -19,6 +21,7 @@ const OrderTracking = () => {
           (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
         );
         setOrders(sortedOrders);
+        console.log(sortedOrders);
       })
       .catch((error) => {
         console.log("getting error while fetching the order", error);
@@ -68,6 +71,14 @@ const OrderTracking = () => {
       order.firstName.toLowerCase().includes(debouncedSearchQuery.toLowerCase())
   );
 
+  const handleViewDetails = (order) => {
+    setSelectedOrder(order);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedOrder(null);
+  };
+
   return (
     <div className="w-[350px] sm:w-full bg-background p-5 rounded-xl">
       <div className="overflow-x-auto">
@@ -85,6 +96,12 @@ const OrderTracking = () => {
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
                 Order By
+              </th>
+              <th
+                scope="col"
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              >
+                Product
               </th>
               <th
                 scope="col"
@@ -114,12 +131,17 @@ const OrderTracking = () => {
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
             {filteredOrders.map((order, index) => (
-              <tr key={index}>
+              <tr key={index} onClick={() => handleViewDetails(order)} className="cursor-pointer">
                 <td className="px-6 py-4 whitespace-nowrap">
                   #{order._id.slice(16, 23)}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   {order.firstName}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  {order.items.map((item, idx) => (
+                    <p>{item.name}</p>
+                  ))}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">{order.email}</td>
                 <td className="px-6 py-4 whitespace-nowrap">
@@ -133,38 +155,21 @@ const OrderTracking = () => {
                   {order.status}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap relative">
-                  <button
-                    className="text-indigo-600 hover:text-indigo-900"
-                    onClick={() =>
-                      setActiveDropdown(activeDropdown === index ? null : index)
-                    }
-                  >
+                  <button className="text-indigo-600 hover:text-indigo-900">
                     ...
                   </button>
-                  {activeDropdown === index && (
-                    <div className="absolute bg-white shadow-lg rounded-md p-2 mt-1 z-10">
-                      <button
-                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        onClick={() =>
-                          handleStatusUpdate(order._id, "Processing")
-                        }
-                      >
-                        Processing
-                      </button>
-                      <button
-                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        onClick={() => handleStatusUpdate(order._id, "Shipped")}
-                      >
-                        Shipped
-                      </button>
-                    </div>
-                  )}
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+      {selectedOrder && (
+        <OrderTrackingDetails
+          order={selectedOrder}
+          onClose={handleCloseModal}
+        />
+      )}
     </div>
   );
 };
