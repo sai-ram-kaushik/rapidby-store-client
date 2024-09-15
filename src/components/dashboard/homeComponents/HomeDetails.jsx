@@ -22,7 +22,6 @@ const HomeDetails = () => {
       )
       .then((response) => {
         setCount(response.data.data);
-  
       })
       .catch((error) => {
         console.error("Error fetching the product count", error);
@@ -40,10 +39,20 @@ const HomeDetails = () => {
   });
 
   useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+
     axios
-      .get(`${import.meta.env.VITE_API_ENDPOINT_URI}/api/store/get-count`)
+      .get(
+        `${import.meta.env.VITE_API_ENDPOINT_URI}/api/public/total-customers`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((response) => {
         setStoreAdminCount(response.data.data);
+        console.log(response.data.data);
       });
   }, []);
 
@@ -104,7 +113,7 @@ const HomeDetails = () => {
                 <img src={totalCustomer.arrowIcon} />
               </div>
               <div className="flex items-center gap-2">
-                <h3 className="text-[56px] font-bold">{storeAdminCount}</h3>
+                <h3 className="text-[56px] font-bold">{storeAdminCount.userCount}</h3>
                 <div className="flex flex-col items-start">
                   <p>10 New products</p>
                   <p>added last month</p>

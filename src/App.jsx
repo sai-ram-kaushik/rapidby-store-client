@@ -21,43 +21,49 @@ import DashboardStoreSettings from "./pages/dashboard/DashboardStoreSettings";
 import DashboardCustomerSupport from "./pages/dashboard/DashboardCustomerSupport";
 import DashboardReport from "./pages/dashboard/DashboardReport";
 import DashboardCustomDesign from "./pages/dashboard/DashboardCustomDesign";
+import StoreLogin from "./pages/store/StoreLogin";
+import StoreRegister from "./pages/store/StoreRegister";
 
 const App = () => {
   return (
     <BrowserRouter>
       <AuthProvider>
         <Routes>
-          {/* Wrap the layout around all main routes including store routes */}
-          <Route
-            path="/*"
-            element={
-              <Layout>
-                <Routes>
-                  {/* Public Routes */}
-                  <Route path="/" element={<Home home={data.home} />} />
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/register" element={<Register />} />
-                </Routes>
-              </Layout>
-            }
-          />
-
-          {/* Dashboard Protected Routes */}
           <Route
             path="/store-admin/dashboard/*"
             element={<ProtectedRoute Component={DashboardComponents} />}
           />
 
-          <Route path="/store" element={<Store />} />
-          <Route path="/store/:storeName" element={<Store />} />
           <Route
-            path="/store/:storeName/product/:id"
-            element={<SingleProduct />}
-          />
-          <Route path="/store/:storeName/product/:id/cart" element={<Cart />} />
-          <Route
-            path="/store/:storeName/product/:id/payment"
-            element={<Payment />}
+            path="/*"
+            element={
+              <Layout>
+                <Routes>
+                  <Route path="/" element={<Home home={data.home} />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                  {/* <Route path="/store" element={<Store />} /> */}
+                  <Route path="/store/:storeName" element={<StoreLogin />} />
+                  <Route
+                    path="/store/:storeName/register"
+                    element={<StoreRegister />}
+                  />
+                  <Route path="/:storeName/store" element={<Store />} />
+                  <Route
+                    path="/store/:storeName/product/:id"
+                    element={<SingleProduct />}
+                  />
+                  <Route
+                    path="/store/:storeName/product/:id/cart"
+                    element={<Cart />}
+                  />
+                  <Route
+                    path="/store/:storeName/product/:id/payment"
+                    element={<Payment />}
+                  />
+                </Routes>
+              </Layout>
+            }
           />
         </Routes>
       </AuthProvider>

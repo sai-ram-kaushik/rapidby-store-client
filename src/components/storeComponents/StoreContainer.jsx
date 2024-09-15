@@ -33,7 +33,6 @@ const StoreContainer = () => {
           const productResponse = await axios.get(
             `${import.meta.env.VITE_API_ENDPOINT_URI}/api/public/store/name/${storeName}/products`
           );
-       
           setProducts(productResponse.data.data);
         }
       } catch (error) {
