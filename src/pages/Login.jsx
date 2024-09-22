@@ -19,7 +19,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-
+  
     try {
       if (showResetPassword) {
         if (!email || !newPassword) {
@@ -27,12 +27,12 @@ const Login = () => {
           setIsLoading(false);
           return;
         }
-
+  
         const response = await axios.put(
           `${import.meta.env.VITE_API_ENDPOINT_URI}/api/store/reset-password`,
           { email, newPassword }
         );
-
+  
         toast.success("Password successfully reset. You can now log in.");
         setShowResetPassword(false);
         setEmail("");
@@ -43,17 +43,17 @@ const Login = () => {
           setIsLoading(false);
           return;
         }
-
+  
         const response = await axios.post(
           `${import.meta.env.VITE_API_ENDPOINT_URI}/api/store/login-store-admin`,
           { username, password }
         );
-
+  
         const { accessToken, refreshToken, storeAdmin } = response.data.data;
-
+  
         Cookies.set("accessToken", accessToken, { expires: 7 });
         Cookies.set("refreshToken", refreshToken, { expires: 7 });
-
+  
         login({ accessToken, refreshToken, storeData: storeAdmin });
         toast.success("User successfully logged in");
         setTimeout(() => {
@@ -64,7 +64,13 @@ const Login = () => {
       console.error("Error:", error);
       const errorMessage =
         error.response?.data?.message || "Error while processing your request";
-      toast.error(errorMessage);
+      
+      // Check if the error is related to wrong credentials
+      if (error.response?.status === 401) {
+        toast.error("Incorrect username or password");
+      } else {
+        toast.error(errorMessage);
+      }
     } finally {
       setIsLoading(false);
     }
