@@ -20,7 +20,6 @@ const HomeStats = () => {
       })
       .then((response) => {
         setTopProducts(response.data.data);
-        console.log(response.data.data);
       });
 
     // Fetch revenue data for months

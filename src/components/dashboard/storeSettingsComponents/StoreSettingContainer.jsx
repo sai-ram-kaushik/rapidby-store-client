@@ -37,7 +37,7 @@ const StoreSettingContainer = () => {
       });
 
     axios
-      .get(`http://localhost:8000/api/admin/get-all-themes`)
+      .get(`${import.meta.env.VITE_API_ENDPOINT_URI}/api/admin/get-all-themes`)
       .then((response) => {
         setThemes(response.data.data);
       });
@@ -92,7 +92,7 @@ const StoreSettingContainer = () => {
 
   const handleSetStoreTheme = () => {
     axios
-      .put(`http://localhost:8000/api/admin/set-store-theme`)
+      .put(`${import.meta.env.VITE_API_ENDPOINT_URI}/api/admin/set-store-theme`)
       .then((response) => {
         console.log("theme has been added");
       });

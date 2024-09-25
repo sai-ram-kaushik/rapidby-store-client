@@ -21,7 +21,6 @@ const OrderTracking = () => {
           (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
         );
         setOrders(sortedOrders);
-        console.log(sortedOrders);
       })
       .catch((error) => {
         console.log("getting error while fetching the order", error);

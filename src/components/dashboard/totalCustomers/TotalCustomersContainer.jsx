@@ -7,14 +7,13 @@ const TotalCustomersContainer = () => {
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
     axios
-      .get(`http://localhost:8000/api/public/get-total-customer-details`, {
+      .get(`${import.meta.env.VITE_API_ENDPOINT_URI}/api/public/get-total-customer-details`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
       .then((response) => {
         setCustomers(response.data.data);
-        console.log(response.data.data);
       })
       .catch((error) => {
         console.error("Error fetching customer details:", error);

@@ -52,7 +52,6 @@ const HomeDetails = () => {
       )
       .then((response) => {
         setStoreAdminCount(response.data.data);
-        console.log(response.data.data);
       });
   }, []);
 

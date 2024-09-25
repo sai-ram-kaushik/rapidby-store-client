@@ -83,7 +83,6 @@ const Payment = () => {
         `${import.meta.env.VITE_API_ENDPOINT_URI}/api/store/create-order`,
         orderDetails
       );
-      console.log(response.data);
       localStorage.removeItem("cart");
       toast.success("Order has been placed");
       setTimeout(() => {
