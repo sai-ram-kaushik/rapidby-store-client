@@ -25,15 +25,6 @@ const StoreContainer = () => {
             }
           );
           setProducts(response.data.data);
-        } else {
-          const storeResponse = await axios.get(
-            `${import.meta.env.VITE_API_ENDPOINT_URI}/api/public/store/name/${storeName}`
-          );
-          setStoreData(storeResponse.data.data);
-          const productResponse = await axios.get(
-            `${import.meta.env.VITE_API_ENDPOINT_URI}/api/public/store/name/${storeName}/products`
-          );
-          setProducts(productResponse.data.data);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -42,19 +33,6 @@ const StoreContainer = () => {
 
     fetchStoreData();
   }, [authData, storeName]);
-
-  const handleCopy = () => {
-    const profileUrl = `${window.location.origin}/store/${storeData.storeName}`;
-    navigator.clipboard.writeText(profileUrl).then(
-      () => {
-        setCopySuccess("Profile URL copied to clipboard!");
-        setTimeout(() => setCopySuccess(""), 3000);
-      },
-      () => {
-        setCopySuccess("Failed to copy URL.");
-      }
-    );
-  };
 
   return (
     <div className="w-full text-primary py-10">

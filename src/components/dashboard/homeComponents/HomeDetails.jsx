@@ -102,7 +102,7 @@ const HomeDetails = () => {
           </div>
         </Link>
 
-        <Link to="/store-admin/dashboard/customer-support" className="w-full">
+        <Link to="/store-admin/dashboard/total-customers" className="w-full">
           <div className="bg-[#FFEDD3] md:min-w-[374.67px] md:min-h-[175px] rounded-lg w-full">
             <div className="flex flex-col items-start gap-3 py-[28px] px-[32px]">
               <div className="flex items-center gap-4">

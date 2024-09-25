@@ -9,6 +9,8 @@ const StoreRegister = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [contact, setContact] = useState("");
+  const [province, setProvince] = useState("");
   const { storeName } = useParams(); // Extract storeName from the params
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -25,6 +27,8 @@ const StoreRegister = () => {
           email,
           password,
           store: storeName,
+          contact,
+          province,
         }
       );
 
@@ -44,7 +48,7 @@ const StoreRegister = () => {
   };
 
   return (
-    <div className="flex md:h-[80vh]">
+    <div className="flex h-screen">
       <ToastContainer />
       <div className="w-full flex items-center justify-center">
         <div className="max-w-md w-full p-6">
@@ -84,6 +88,42 @@ const StoreRegister = () => {
                   name="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
+                />
+              </div>
+            </div>
+
+            <div className="flex items-center gap-5 w-full">
+              <div>
+                <label
+                  htmlFor="contact"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Mobile Number <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="contact"
+                  name="contact"
+                  value={contact}
+                  onChange={(e) => setContact(e.target.value)}
+                  className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="province"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  State <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="province"
+                  name="province"
+                  value={province}
+                  onChange={(e) => setProvince(e.target.value)}
                   className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
                 />
               </div>

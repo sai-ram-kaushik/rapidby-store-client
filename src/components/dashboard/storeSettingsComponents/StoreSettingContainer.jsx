@@ -12,6 +12,7 @@ const StoreSettingContainer = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const { storeName } = useParams();
   const [isPending, startTransition] = useTransition();
+  const [themes, setThemes] = useState([]);
 
   const handleTabChange = (id) => {
     startTransition(() => {
@@ -33,6 +34,12 @@ const StoreSettingContainer = () => {
       )
       .then((response) => {
         setStoreAdminDetails(response.data.data);
+      });
+
+    axios
+      .get(`http://localhost:8000/api/admin/get-all-themes`)
+      .then((response) => {
+        setThemes(response.data.data);
       });
   }, []);
 
@@ -59,7 +66,7 @@ const StoreSettingContainer = () => {
           const productResponse = await axios.get(
             `${import.meta.env.VITE_API_ENDPOINT_URI}/api/public/store/name/${storeName}/products`
           );
-  
+
           setProducts(productResponse.data.data);
         }
       } catch (error) {
@@ -81,6 +88,14 @@ const StoreSettingContainer = () => {
         setCopySuccess("Failed to copy URL.");
       }
     );
+  };
+
+  const handleSetStoreTheme = () => {
+    axios
+      .put(`http://localhost:8000/api/admin/set-store-theme`)
+      .then((response) => {
+        console.log("theme has been added");
+      });
   };
 
   const Product_Tab_Data = [
@@ -260,16 +275,18 @@ const StoreSettingContainer = () => {
       title: "Themes",
       id: "Themes",
       content: (
-        <div className="flex items-center justify-center mt-10 text-center">
-          <p className="text-lg">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum
-            voluptatibus reprehenderit, nihil laudantium nemo saepe alias itaque
-            deserunt? Quasi tenetur quibusdam dolorum dolores. Earum nostrum
-            pariatur, impedit repellat ipsam beatae aliquam! Placeat tenetur
-            reprehenderit quam vel corrupti labore facere illum maiores nemo
-            consectetur expedita, accusamus aperiam voluptatem, pariatur eius
-            ratione?
-          </p>
+        <div className="flex flex-wrap items-start justify-start mt-10 text-center">
+          {themes.map((theme, idx) => {
+            return (
+              <img
+                src={theme.imageUrl}
+                width={200}
+                className="rounded-xl"
+                key={idx}
+                onClick={handleSetStoreTheme}
+              />
+            );
+          })}
         </div>
       ),
     },

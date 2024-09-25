@@ -59,7 +59,7 @@ const StoreLogin = () => {
         // login({ accessToken, refreshToken, userData: user });
         toast.success("User successfully logged in");
         setTimeout(() => {
-          navigate(`/${storeName}/store`);
+          navigate(`/store/${storeName}/store-products`);
         }, 1000);
       }
     } catch (error) {
@@ -73,7 +73,7 @@ const StoreLogin = () => {
   };
 
   return (
-    <div className="flex md:h-[70vh]">
+    <div className="flex h-screen">
       <div className="w-full h-full flex items-center justify-center">
         <div className="max-w-md w-full p-6">
           <h2 className="text-3xl font-semibold mb-6 text-primary text-center">

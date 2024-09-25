@@ -23,6 +23,7 @@ import DashboardReport from "./pages/dashboard/DashboardReport";
 import DashboardCustomDesign from "./pages/dashboard/DashboardCustomDesign";
 import StoreLogin from "./pages/store/StoreLogin";
 import StoreRegister from "./pages/store/StoreRegister";
+import DashboardTotalCustomers from "./pages/dashboard/DashboardTotalCustomers";
 
 const App = () => {
   return (
@@ -42,8 +43,7 @@ const App = () => {
                   <Route path="/" element={<Home home={data.home} />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/register" element={<Register />} />
-                  {/* <Route path="/store" element={<Store />} /> */}
-                  <Route path="/store/:storeName" element={<StoreLogin />} />
+                  {/* <Route path="/store/:storeName" element={<StoreLogin />} />
                   <Route
                     path="/store/:storeName/register"
                     element={<StoreRegister />}
@@ -60,11 +60,13 @@ const App = () => {
                   <Route
                     path="/store/:storeName/product/:id/payment"
                     element={<Payment />}
-                  />
+                  /> */}
                 </Routes>
               </Layout>
             }
           />
+
+          <Route path="/store/*" element={<StoreComponents />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>
@@ -87,8 +89,23 @@ const DashboardComponents = () => {
         />
         <Route path="/report" element={<DashboardReport />} />
         <Route path="/custom-design" element={<DashboardCustomDesign />} />
+        <Route path="/total-customers" element={<DashboardTotalCustomers />} />
       </Routes>
     </DashboardLayout>
+  );
+};
+
+const StoreComponents = () => {
+  return (
+    <>
+      <Routes>
+        <Route path="/:storeName" element={<StoreLogin />} />
+        <Route path="/:storeName/register" element={<StoreRegister />} />
+        <Route path="/:storeName/store-products" element={<Store />} />
+        <Route path="/:storeName/product/:id" element={<SingleProduct />} />
+        <Route path="/:storeName/product/:id/cart" element={<Cart />} />
+      </Routes>
+    </>
   );
 };
 

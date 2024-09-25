@@ -12,7 +12,7 @@ const Cart = () => {
   const [mobileNumber, setMobileNumber] = useState("");
   const [places, setPlaces] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const {storeName, id} = useParams()
+  const { storeName, id } = useParams();
 
   const navigate = useNavigate();
 
@@ -49,7 +49,9 @@ const Cart = () => {
       amount: calculateTotalAmount(),
     };
 
-    navigate(`/store/${storeName}/product/${id}/payment`, { state: { orderDetails } });
+    navigate(`/store/${storeName}/product/${id}/payment`, {
+      state: { orderDetails },
+    });
   };
 
   return (
@@ -102,7 +104,7 @@ const Cart = () => {
 
           <div className="flex items-center justify-between">
             <Link
-              to="/store"
+              to={`/store/${storeName}/store-products`}
               className="flex font-semibold text-indigo-600 text-sm mt-10"
             >
               <svg
@@ -117,10 +119,12 @@ const Cart = () => {
         </div>
         <div className="w-full sm:w-1/4 bg-white px-10 py-10">
           <h2 className="font-semibold text-2xl mb-5">Order Details</h2>
-          <form onSubmit={(e) => {
+          <form
+            onSubmit={(e) => {
               e.preventDefault();
               handleCreateOrder();
-            }}>
+            }}
+          >
             <div className="mb-4">
               <label
                 className="block text-gray-700 text-sm font-bold mb-2"

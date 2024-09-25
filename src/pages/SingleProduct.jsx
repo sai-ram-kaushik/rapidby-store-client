@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const SingleProduct = () => {
   const { authData } = useContext(AuthContext);
-  const { id, storeName } = useParams();
+  const { storeName, id } = useParams();
   const [product, setProduct] = useState(null);
   const { about } = data;
   const navigate = useNavigate();
@@ -17,11 +17,7 @@ const SingleProduct = () => {
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
     axios
-      .get(`${import.meta.env.VITE_API_ENDPOINT_URI}/api/store/${storeName}/product/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .get(`http://localhost:8000/api/store/${storeName}/product/${id}`)
       .then((response) => {
         setProduct(response.data.data);
       })
@@ -60,8 +56,8 @@ const SingleProduct = () => {
     toast.success("Item added to cart!");
 
     setTimeout(() => {
-      navigate(`/store/${storeName}/product/${id}/cart`)
-    }, 2000)
+      navigate(`/store/${storeName}/product/${id}/cart`);
+    }, 2000);
   };
 
   if (!product || !product.catalogItem) {
