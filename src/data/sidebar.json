@@ -39,7 +39,7 @@
         "path": "/store-admin/dashboard/customer-support"
       }
     ],
-    "logoutIcon": "/dashboardIcons/logout.svg",
+    "logoutIcon": "/dashboardIcons/power.svg",
     "logoutTitle": "Logout"
   }
 }
