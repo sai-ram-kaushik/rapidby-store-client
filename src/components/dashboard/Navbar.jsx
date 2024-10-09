@@ -4,28 +4,39 @@ import notificationIcon from "/dashboardIcons/notification.svg";
 import { AuthContext } from "../../context/AuthContext";
 import { IoMdMenu, IoMdClose } from "react-icons/io";
 import data from "../../data/sidebar.json";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false); // State for dropdown
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const { authData } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleChange = () => {
     setNav(!nav);
   };
 
   const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen); // Toggle dropdown visibility
+    setDropdownOpen(!dropdownOpen);
   };
 
   const handleLogout = () => {
-    // Implement logout logic
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    toast.success("Store Admin has been logged out");
+
+    setTimeout(() => {
+      navigate("/");
+    }, 2000);
+
     console.log("Logging out...");
   };
 
   return (
     <div className="py-5 px-5 md:px-10 w-full h-[68px] bg-background">
+      <ToastContainer />
       <div className="flex items-center justify-between w-full h-full">
         {/* Search bar */}
         <div className="flex max-w-[290px] gap-2 bg-gray-100 p-2 rounded-xl">
@@ -56,12 +67,14 @@ const Navbar = () => {
                 <Link
                   to="/store-admin/dashboard/store-settings"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  onClick={toggleDropdown}
                 >
                   Account Settings
                 </Link>
                 <Link
                   to="/change-password"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  onClick={toggleDropdown}
                 >
                   Change Password
                 </Link>

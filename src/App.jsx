@@ -24,6 +24,7 @@ import DashboardCustomDesign from "./pages/dashboard/DashboardCustomDesign";
 import StoreLogin from "./pages/store/StoreLogin";
 import StoreRegister from "./pages/store/StoreRegister";
 import DashboardTotalCustomers from "./pages/dashboard/DashboardTotalCustomers";
+import PageNotFound from "./components/PageNotFound";
 
 const App = () => {
   return (
@@ -43,6 +44,7 @@ const App = () => {
                   <Route path="/" element={<Home home={data.home} />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/register" element={<Register />} />
+                  <Route path="/*" element={<PageNotFound />} />
                   {/* <Route path="/store/:storeName" element={<StoreLogin />} />
                   <Route
                     path="/store/:storeName/register"
