@@ -8,7 +8,8 @@ const CustomerSupport = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [replyMessage, setReplyMessage] = useState("");
   const [isChatOpen, setIsChatOpen] = useState(false);
-  const [selectedTickets, setSelectedTickets] = useState([]); // For selected checkboxes
+  const [selectedTickets, setSelectedTickets] = useState([]);
+  const [filterStatus, setFilterStatus] = useState("All");
 
   useEffect(() => {
     axios
@@ -95,19 +96,49 @@ const CustomerSupport = () => {
     }
   };
 
+  // Filter tickets based on status
+  const filteredTickets = tickets.filter((ticket) => {
+    if (filterStatus === "All") return true;
+    return ticket.status === filterStatus;
+  });
+
   return (
     <div className="flex flex-col h-screen w-full">
       <div className="bg-white border-b border-gray-200 p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center rounded-xl">
         <h2 className="text-lg font-semibold mb-2 sm:mb-0">Tickets</h2>
         <ul className="flex flex-wrap space-x-4">
-          <li className="text-purple-600 font-semibold cursor-pointer">
+          <li
+            className={`cursor-pointer ${
+              filterStatus === "All" ? "text-purple-600 font-semibold" : ""
+            }`}
+            onClick={() => setFilterStatus("All")}
+          >
             All({ticketCount.totalTickets})
           </li>
-          <li className="cursor-pointer">Open({ticketCount.openTickets})</li>
-          <li className="cursor-pointer">
+          <li
+            className={`cursor-pointer ${
+              filterStatus === "Open" ? "text-purple-600 font-semibold" : ""
+            }`}
+            onClick={() => setFilterStatus("Open")}
+          >
+            Open({ticketCount.openTickets})
+          </li>
+          <li
+            className={`cursor-pointer ${
+              filterStatus === "In Process"
+                ? "text-purple-600 font-semibold"
+                : ""
+            }`}
+            onClick={() => setFilterStatus("In Process")}
+          >
             In Process({ticketCount.inProcessTickets})
           </li>
-          <li className="cursor-pointer">
+          <li
+            className={`cursor-pointer ${
+              filterStatus === "Closed" ? "text-purple-600 font-semibold" : ""
+            }`}
+            onClick={() => setFilterStatus("Closed")}
+          >
             Closed({ticketCount.closedTickets})
           </li>
         </ul>
@@ -124,22 +155,21 @@ const CustomerSupport = () => {
               <thead className="bg-gray-100">
                 <tr className="text-left text-sm font-semibold text-gray-600">
                   <th className="p-4">
-                    {/* Checkbox column */}
                     <input
                       type="checkbox"
                       onChange={(e) => {
                         const isChecked = e.target.checked;
                         if (isChecked) {
                           setSelectedTickets(
-                            tickets.map((ticket) => ticket._id)
+                            filteredTickets.map((ticket) => ticket._id)
                           );
                         } else {
                           setSelectedTickets([]);
                         }
                       }}
                       checked={
-                        selectedTickets.length === tickets.length &&
-                        tickets.length > 0
+                        selectedTickets.length === filteredTickets.length &&
+                        filteredTickets.length > 0
                       }
                     />
                   </th>
@@ -152,7 +182,7 @@ const CustomerSupport = () => {
                 </tr>
               </thead>
               <tbody>
-                {tickets.map((ticket, index) => (
+                {filteredTickets.map((ticket, index) => (
                   <tr
                     key={index}
                     className={`text-sm text-gray-700 border-b hover:bg-gray-50 cursor-pointer ${
@@ -163,12 +193,11 @@ const CustomerSupport = () => {
                     onClick={() => handleRowClick(ticket)}
                   >
                     <td className="p-4">
-                      {/* Individual checkbox for each ticket */}
                       <input
                         type="checkbox"
-                        checked={selectedTickets.includes(ticket._id)} // Only check the box if the ticket is selected
+                        checked={selectedTickets.includes(ticket._id)}
                         onChange={(e) => {
-                          e.stopPropagation(); // Prevent row click when checking the box
+                          e.stopPropagation();
                           handleCheckboxChange(ticket._id);
                         }}
                       />

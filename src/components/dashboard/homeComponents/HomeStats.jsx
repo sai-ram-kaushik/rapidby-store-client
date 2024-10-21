@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Chart from "chart.js/auto";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const HomeStats = () => {
   const chartContainer = useRef(null);
@@ -20,6 +21,7 @@ const HomeStats = () => {
       })
       .then((response) => {
         setTopProducts(response.data.data);
+        console.log(response.data.data);
       });
 
     // Fetch revenue data for months
@@ -122,7 +124,7 @@ const HomeStats = () => {
         chartInstance.current.destroy();
       }
     };
-  }, [revenueData]); // Re-render chart whenever revenueData changes
+  }, [revenueData]);
 
   return (
     <div className="w-full">
@@ -138,7 +140,9 @@ const HomeStats = () => {
           <div className="flex flex-col items-start w-full">
             <div className="flex items-center justify-between w-full">
               <h3 className="text-xl font-semibold">Top selling product</h3>
-              <p className="text-secondary cursor-pointer">See All &rarr;</p>
+              <Link to="/store-admin/dashboard/products">
+                <p className="text-secondary cursor-pointer">See All &rarr;</p>
+              </Link>
             </div>
 
             <div className="flex flex-col items-start gap-4 mt-4 w-full">
@@ -147,28 +151,41 @@ const HomeStats = () => {
                   key={index}
                   className="flex flex-col md:flex-row items-center justify-between border w-full p-3 rounded-lg"
                 >
-                  <div className="flex items-center gap-2">
-                    <img
-                      src={product.image}
-                      alt={product.label}
-                      className="w-12 h-12 object-cover rounded-md"
-                    />
-                    <p className="max-w-[200px] text-base leading-6 text-secondary">
-                      {product.label}
+                  {/* Access catalogItem directly */}
+                  {product.catalogItem ? (
+                    <div className="flex items-center gap-2">
+                      <img
+                        src={product.catalogItem.imageUrl} // Image from catalogItem object
+                        alt={product.catalogItem.name} // Label from catalogItem object
+                        className="w-12 h-12 object-cover rounded-md"
+                      />
+                      <p className="max-w-[200px] text-base leading-6 text-secondary">
+                        {product.catalogItem.name}{" "}
+                        {/* Label from catalogItem object */}
+                      </p>
+                    </div>
+                  ) : (
+                    <p className="text-sm text-paraHelper">
+                      No catalog item available
                     </p>
-                  </div>
+                  )}
 
-                  <div className="flex items-center gap-4 mt-2 md:mt-0">
-                    <div className="flex flex-col items-start">
-                      <p className="text-xs text-paraHelper">UNITS SOLD</p>
-                      <p>{product.unitsSold} units</p>
-                    </div>
+                  {/* Render sales and units sold if catalogItem exists */}
+                  {product.catalogItem && (
+                    <div className="flex items-center gap-4 mt-2 md:mt-0">
+                      <div className="flex flex-col items-start">
+                        <p className="text-xs text-paraHelper">UNITS SOLD</p>
+                        <p>{product.catalogItem.unitsSold} units</p>{" "}
+                        {/* Units sold from catalogItem */}
+                      </div>
 
-                    <div className="flex flex-col items-start">
-                      <p className="text-xs text-paraHelper">TOTAL SALES</p>
-                      <p>{product.totalSales}</p>
+                      <div className="flex flex-col items-start">
+                        <p className="text-xs text-paraHelper">TOTAL SALES</p>
+                        <p>${product.catalogItem.totalSales}</p>{" "}
+                        {/* Total sales from catalogItem */}
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               ))}
             </div>

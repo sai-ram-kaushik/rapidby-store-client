@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import searchIcon from "/dashboardIcons/search.svg";
@@ -6,6 +6,8 @@ import Button from "@/utils/Button";
 
 const ProductTable = () => {
   const [products, setProducts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const location = useLocation();
 
   useEffect(() => {
@@ -18,17 +20,42 @@ const ProductTable = () => {
       })
       .then((response) => {
         setProducts(response.data.data);
+        setFilteredProducts(response.data.data); // initialize filteredProducts
       });
   }, []);
 
   const isActiveTab = (path) => location.pathname === path;
 
+  // Debounce function
+  const debounce = (func, delay) => {
+    let debounceTimer;
+    return function (...args) {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => func(...args), delay);
+    };
+  };
+
+  // Filter products based on search term
+  const handleSearch = (query) => {
+    const filtered = products.filter((product) =>
+      product.catalogItem.name.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilteredProducts(filtered);
+  };
+
+  // Apply debounce to search
+  const debouncedSearch = useCallback(debounce(handleSearch, 500), [products]);
+
+  const handleInputChange = (e) => {
+    const query = e.target.value;
+    setSearchTerm(query);
+    debouncedSearch(query); // Use debounced search
+  };
+
   return (
     <div className="w-[350px] sm:w-full bg-background p-5 rounded-xl">
       <div className="flex items-start justify-between w-full">
-        <h3 className="text-[14px] md:text-[20px] font-bold">
-          Products
-        </h3>
+        <h3 className="text-[14px] md:text-[20px] font-bold">Products</h3>
 
         <Link to="/store-admin/dashboard/products/catalogs">
           <button className="rounded-xl text-background bg-[#48246C] px-5 py-2">
@@ -42,7 +69,7 @@ const ProductTable = () => {
             to="/store-admin/dashboard/products"
             className={`${
               isActiveTab("/store-admin/dashboard/products")
-                ? "bg-container p-2 rounded-xl shadow-md"
+                ? "bg-container p-2 rounded-xl"
                 : ""
             }`}
           >
@@ -66,6 +93,8 @@ const ProductTable = () => {
             type="search"
             className="bg-transparent outline-none w-full"
             placeholder="Search"
+            value={searchTerm}
+            onChange={handleInputChange} // Handle input change with debounce
           />
         </div>
       </div>
@@ -83,8 +112,8 @@ const ProductTable = () => {
             </tr>
           </thead>
           <tbody>
-            {Array.isArray(products) && products.length > 0 ? (
-              products.map((product, index) => (
+            {Array.isArray(filteredProducts) && filteredProducts.length > 0 ? (
+              filteredProducts.map((product, index) => (
                 <tr className="bg-white border-b" key={index}>
                   <td className="px-6 py-4 text-center">
                     <div className="flex items-center gap-3">
