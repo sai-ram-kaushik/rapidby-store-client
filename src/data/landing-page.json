@@ -4,8 +4,7 @@
     "followButton": "Follow us on",
     "socials": [
       { "label": "Instagram", "icon": "/icons/insta.png" },
-      { "label": "Linkedin", "icon": "/icons/linkedin.png" },
-      { "label": "Facebook", "icon": "/icons/facebook.png" }
+      { "label": "Linkedin", "icon": "/icons/linkedin.png" }
     ],
     "buttonTitle": "Get Started"
   },
@@ -45,8 +44,6 @@
     ],
 
     "socials": [
-      { "label": "facebook", "icon": "/footerIcons/facebook.png" },
-      { "label": "Twitter", "icon": "/footerIcons/twitter.png" },
       { "label": "Instagram", "icon": "/footerIcons/instagram.png" },
       { "label": "Linkedin", "icon": "/footerIcons/linkedin.png" },
       { "label": "Youtube", "icon": "/footerIcons/youtube.png" }
