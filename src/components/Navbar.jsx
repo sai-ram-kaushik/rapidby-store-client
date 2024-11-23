@@ -31,17 +31,22 @@ const Navbar = ({ navbar }) => {
           <div className="flex items-center gap-2">
             {socials.map((social, index) => {
               return (
-                <div
-                  key={index}
-                  className="p-3 shadow-xl bg-background rounded-full"
-                >
-                  <img src={social.icon} />
-                </div>
+                <a href={social.link} target="pblank">
+                  <div
+                    key={index}
+                    className="p-3 shadow-xl bg-background rounded-full"
+                  >
+                    <img src={social.icon} />
+                  </div>
+                </a>
               );
             })}
 
             <Link to="/login">
-              <Button title={buttonTitle} className="bg-secondary font-heading text-background"/>
+              <Button
+                title={buttonTitle}
+                className="bg-secondary font-heading text-background"
+              />
             </Link>
           </div>
         </div>

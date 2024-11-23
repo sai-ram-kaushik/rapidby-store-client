@@ -3,8 +3,16 @@
     "title": "/logo.svg",
     "followButton": "Follow us on",
     "socials": [
-      { "label": "Instagram", "icon": "/icons/insta.png" },
-      { "label": "Linkedin", "icon": "/icons/linkedin.png" }
+      {
+        "label": "Instagram",
+        "icon": "/icons/insta.png",
+        "link": "https://www.instagram.com/rapidby_"
+      },
+      {
+        "label": "Linkedin",
+        "icon": "/icons/linkedin.png",
+        "link": "https://www.linkedin.com/company/rapidby/"
+      }
     ],
     "buttonTitle": "Get Started"
   },
@@ -44,8 +52,16 @@
     ],
 
     "socials": [
-      { "label": "Instagram", "icon": "/footerIcons/instagram.png" },
-      { "label": "Linkedin", "icon": "/footerIcons/linkedin.png" },
+      {
+        "label": "Instagram",
+        "icon": "/footerIcons/instagram.png",
+        "link": "https://www.instagram.com/rapidby_"
+      },
+      {
+        "label": "Linkedin",
+        "icon": "/footerIcons/linkedin.png",
+        "link": "https://www.linkedin.com/company/rapidby/"
+      },
       { "label": "Youtube", "icon": "/footerIcons/youtube.png" }
     ]
   },
@@ -90,78 +106,33 @@
     "title": "We are the favourite platform in the market!",
     "leftReviews": [
       {
-        "name": "Jack",
-        "username": "@jack",
-        "body": "“These top-notch products have not only elevated my brand but also significantly increased my revenue. Thanks a lot”",
+        "name": "Emily Carter",
+        "username": "emily carter",
+        "body": "'Rapidby is a game-changer! I launched my branded products in just a few hours without needing any technical expertise. The real-time visual customization made it so easy to see exactly how my website and products would look. It's like having a whole team of developers and designers at my fingertips!'",
         "img": "/testimonial.png"
       },
       {
-        "name": "Jill",
-        "username": "@jill",
-        "body": "“These top-notch products have not only elevated my brand but also significantly increased my revenue. Thanks a lot”",
+        "name": "Alex Morgan",
+        "username": " Owner of Luxe Threads",
+        "body": "'I've tried other platforms, but nothing compares to Rapidby. It’s intuitive, fast, and incredibly powerful. I loved the ability to customize my product line and website seamlessly. In no time, I was ready to start selling under my own label. Highly recommended!'",
         "img": "/testimonial.png"
       },
       {
-        "name": "John",
-        "username": "@john",
-        "body": "“These top-notch products have not only elevated my brand but also significantly increased my revenue. Thanks a lot”",
+        "name": "Olivia Ramirez",
+        "username": "Creative Strategist",
+        "body": "'Rapidby gave me everything I needed to launch a branded product line for my agency clients. The ease of use and flexibility are unmatched. My clients are blown away by the professional look of their websites and products. Plus, the real-time updates save so much time!'",
         "img": "/testimonial.png"
       },
       {
-        "name": "Jane",
-        "username": "@jane",
-        "body": "“These top-notch products have not only elevated my brand but also significantly increased my revenue. Thanks a lot”",
+        "name": "*Priya Malhotra",
+        "username": "Owner of Cozy Creations",
+        "body": "'As someone with zero technical skills, I was nervous about starting my own online store. Rapidby made the whole process smooth and stress-free. Their customization tools are so straightforward, and the end result looks super professional. I’m already making sales!'",
         "img": "/testimonial.png"
       },
       {
-        "name": "Jenny",
-        "username": "@jenny",
-        "body": "“These top-notch products have not only elevated my brand but also significantly increased my revenue. Thanks a lot”",
-        "img": "/testimonial.png"
-      },
-      {
-        "name": "James",
-        "username": "@james",
-        "body": "“These top-notch products have not only elevated my brand but also significantly increased my revenue. Thanks a lot”",
-        "img": "/testimonial.png"
-      }
-    ],
-
-    "rightReviews": [
-      {
-        "name": "Jack",
-        "username": "@jack",
-        "body": "“These top-notch products have not only elevated my brand but also significantly increased my revenue. Thanks a lot”",
-        "img": "/testimonial.png"
-      },
-      {
-        "name": "Jill",
-        "username": "@jill",
-        "body": "“These top-notch products have not only elevated my brand but also significantly increased my revenue. Thanks a lot”",
-        "img": "/testimonial.png"
-      },
-      {
-        "name": "John",
-        "username": "@john",
-        "body": "“These top-notch products have not only elevated my brand but also significantly increased my revenue. Thanks a lot”",
-        "img": "/testimonial.png"
-      },
-      {
-        "name": "Jane",
-        "username": "@jane",
-        "body": "“These top-notch products have not only elevated my brand but also significantly increased my revenue. Thanks a lot”",
-        "img": "/testimonial.png"
-      },
-      {
-        "name": "Jenny",
-        "username": "@jenny",
-        "body": "“These top-notch products have not only elevated my brand but also significantly increased my revenue. Thanks a lot”",
-        "img": "/testimonial.png"
-      },
-      {
-        "name": "James",
-        "username": "@james",
-        "body": "“These top-notch products have not only elevated my brand but also significantly increased my revenue. Thanks a lot”",
+        "name": "Daniel Stevens",
+        "username": " Founder of GreenSpark",
+        "body": "'Rapidby is the perfect solution for startups like mine. I was able to bring my ideas to life quickly without needing a team of developers. The ability to visualize and tweak my brand in real-time was a huge plus. It’s fast, user-friendly, and worth every penny!'",
         "img": "/testimonial.png"
       }
     ]
@@ -170,18 +141,21 @@
   "faq": {
     "questions": [
       {
-        "question": "What is Rapidby and how does it work?",
-        "answer": "Hello"
+        "question": "How can Rapidby help me start my own product business?",
+        "answer": "Rapidby provides an easy way to create, customize, and launch your own branded products without any technical expertise. Their platform allows you to design and sell your products online under your own label, helping you start and grow your own product business."
       },
       {
-        "question": "What is Rapidby and how does it work?",
-        "answer": "Hello"
+        "question": "What kind of customization and branding options does Rapidby offer?",
+        "answer": "Rapidby offers robust customization capabilities, allowing you to personalize every aspect of your products and website. You can upload your own designs, choose from their library of templates, and control the branding elements to make your offerings truly unique."
       },
       {
-        "question": "What is Rapidby and how does it work?",
-        "answer": "Hello"
+        "question": "Is Rapidby easy to use for someone with no technical skills?",
+        "answer": "Yes, Rapidby is designed to be user-friendly, even for those without any technical background. The intuitive dashboard and visual customization tools make it simple to bring your product ideas to life, no coding required."
       },
-      { "question": "What is Rapidby and how does it work?", "answer": "Hello" }
+      {
+        "question": "How quickly can I get my branded products up and running with Rapidby?",
+        "answer": "Rapidby's streamlined setup process enables you to launch your branded products in a matter of days, not weeks or months. Their platform handles the backend logistics so you can focus on designing and selling your offerings."
+      }
     ]
   }
 }

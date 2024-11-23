@@ -18,9 +18,11 @@ const Footer = ({ footer }) => {
         <div className="flex items-center gap-5">
           {socials.map((social, index) => {
             return (
-              <div className="bg-background rounded-full p-3" key={index}>
-                <img src={social.icon} />
-              </div>
+              <a href={social.link} target="blank">
+                <div className="bg-background rounded-full p-3" key={index}>
+                  <img src={social.icon} />
+                </div>
+              </a>
             );
           })}
         </div>
